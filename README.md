@@ -1,5 +1,8 @@
 # InovaCity · Robô de triagem de ocorrências urbanas
 
+Global Solution 2026.2 – CitizenTech. Grupo **InovaCity**: *Conectando pessoas. Transformando cidades.*
+
+
 > Conectando pessoas. Transformando cidades.
 
 Robô de RPA com IA que lê os relatos dos moradores sobre problemas do bairro (buraco, poste apagado, lixo e entulho, alagamento, calçada sem acessibilidade), decide o destino de cada um e deixa para uma pessoa só o que não consegue resolver com segurança.
