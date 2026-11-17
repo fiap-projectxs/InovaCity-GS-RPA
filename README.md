@@ -4,10 +4,6 @@
 
 Robô de RPA com IA que lê os relatos dos moradores sobre problemas do bairro (buraco, poste apagado, lixo e entulho, alagamento, calçada sem acessibilidade), decide o destino de cada um e deixa para uma pessoa só o que não consegue resolver com segurança.
 
-Projeto do grupo InovaCity, **FIAP · Global Solution 2026.2 – CitizenTech**, disciplina *AI for Robotic Process Automation*.
-
-**Integrantes:** Rodrigo Wolkoff Giorgi (RM 556980) · Carlos Eduardo Mamede (RM 568269)
-
 ![Site de apresentação: o robô encaminhando os relatos](codigo/figs/site_palco.png)
 
 ## O que o robô faz
