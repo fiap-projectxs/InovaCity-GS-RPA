@@ -1,0 +1,101 @@
+id,texto,lat,lon,data,rotulo
+OC1001,pista com depressao funda danificando pneus em Rua das Acacias,-23.55753,-46.64717,2026-11-05,buraco_via
+OC1002,luminaria da rua nao acende ja houve queda aqui em Rua das Acacias,-23.56055,-46.65085,2026-11-12,iluminacao
+OC1003,caminhao de lixo nao passou esta semana ja houve queda aqui em Rua do Comercio,-23.55703,-46.65109,2026-11-15,lixo_entulho
+OC1004,enxurrada invade as casas da baixada risco de acidente em Rua do Comercio,-23.55952,-46.65211,2026-11-01,alagamento_drenagem
+OC1005,sem rampa para cadeira de rodas o cruzamento em Av. Central,-23.55989,-46.64952,2026-11-15,calcada_acessibilidade
+OC1006,tapa-buraco nunca chegou aqui urgente em Rua do Comercio,-23.5579,-46.64768,2026-11-06,buraco_via
+OC1007,sem luz no poste desde segunda urgente em Rua do Comercio,-23.55828,-46.65031,2026-11-09,iluminacao
+OC1008,amontoado de lixo atraindo ratos risco de acidente em Praca do Bairro,-23.55735,-46.65117,2026-11-15,lixo_entulho
+OC1009,ralo da rua nao escoa a agua risco de acidente em Praca do Bairro,-23.55821,-46.65011,2026-11-04,alagamento_drenagem
+OC1010,calcada estreita e quebrada para idosos urgente em Rua da Escola,-23.55907,-46.64782,2026-11-08,calcada_acessibilidade
+OC1011,motos caem no buraco da via em Rua da Escola,-23.55994,-46.64907,2026-11-07,buraco_via
+OC1012,sem luz no poste desde segunda crianca quase se machucou em Av. Central,-23.55853,-46.64694,2026-11-13,iluminacao
+OC1013,caminhao de lixo nao passou esta semana crianca quase se machucou em Rua das Acacias,-23.55804,-46.65353,2026-11-11,lixo_entulho
+OC1014,agua sobe na rua com qualquer chuva em Travessa Azul,-23.56315,-46.64982,2026-11-14,alagamento_drenagem
+OC1015,CALCADA ESTREITA E QUEBRADA PARA IDOSOS EM AV. CENTRAL,-23.55682,-46.64792,2026-11-01,calcada_acessibilidade
+OC1016,MOTOS CAEM NO BURACO DA VIA EM AV. CENTRAL,-23.56308,-46.65346,2026-11-01,buraco_via
+OC1017,escuridao a praca por falta de lampada em Praca do Bairro,-23.55982,-46.65398,2026-11-10,iluminacao
+OC1018,RESTOS DE OBRA LARGADOS NA CALCADA URGENTE EM AV. CENTRAL,-23.56125,-46.64908,2026-11-12,lixo_entulho
+OC1019,agua sobe na rua com qualquer chuva em Praca do Bairro,-23.55959,-46.64916,2026-11-01,alagamento_drenagem
+OC1020,calcada estreita e quebrada para idosos urgente em Rua do Comercio,-23.56022,-46.6522,2026-11-11,calcada_acessibilidade
+OC1021,motos caem no buraco da via urgente em Rua das Acaias,-23.56298,-46.64932,2026-11-07,buraco_via
+OC1022,"trecho escuro, medo de passar a noite ja hove queda aqui em Praca do Bairro",-23.55915,-46.65064,2026-11-01,iluminacao
+OC1023,amontoado de lixo atraindo ratos crianca quase se machucou em Rua das Acacias,-23.56263,-46.65037,2026-11-04,lixo_entulho
+OC1024,AGUA SOBE NA RUA COM QUALQUER CHUVA EM AV. CENTRAL,-23.56336,-46.65217,2026-11-13,alagamento_drenagem
+OC1025,calcada estreita e quebrada para idosos em Rua da Escola,-23.56396,-46.65372,2026-11-07,calcada_acessibilidade
+OC1026,pavimento cedeu e abriu um rombo em Travessa Azul,-23.5632,-46.65255,2026-11-04,buraco_via
+OC1027,escuridao na praca por falta de lampada em Rua das Acacias,-23.56152,-46.64887,2026-11-04,iluminacao
+OC1028,AMONTOADO DE LIXO ATRAINDO RATOS CRIANCA QUASE SE MACHUCOU EM RUA DO COMERCIO,-23.55927,-46.64695,2026-11-15,lixo_entulho
+OC1029,bueiro sem tampa e entupido em Rua da Escola,-23.55985,-46.64663,2026-11-10,alagamento_drenagem
+OC1030,calcada estreita e quebrada para idosos em Rua da Escola,-23.56385,-46.64852,2026-11-02,calcada_acessibilidade
+OC1031,pista com depressao funda danificando pneus em Av. Central,-23.56387,-46.65039,2026-11-07,buraco_via
+OC1032,"trecho escuro, medo de passar a noite risco de acidente em Av. Central",-23.56396,-46.65381,2026-11-05,iluminacao
+OC1033,restos de obra largados na calcada em Rua do Comercio,-23.56087,-46.65029,2026-11-13,lixo_entulho
+OC1034,enxurrada invade as casas da baixada risco de acidente em Rua das Acacias,-23.55907,-46.65132,2026-11-07,alagamento_drenagem
+OC1035,sem rampa para cadeira de rodas no cruzamento crianca quase se machucou em Rua das Aacias,-23.56365,-46.64835,2026-11-05,calcada_acessibilidade
+OC1036,motos caem no buraco da via risco de acidente em Av. Central,-23.55979,-46.65018,2026-11-12,buraco_via
+OC1037,"trecho escuro, medo de passar a noite risco de acidente em Rua da Escola",-23.56009,-46.65192,2026-11-07,iluminacao
+OC1038,RESTOS DE OBRA LARGADOS NA CALCADA JA HOUVE QUEDA AQUI EM RUA DA ESCOLA,-23.56115,-46.64602,2026-11-03,lixo_entulho
+OC1039,ralo da rua nao escoa a agua em Rua das Acacias,-23.55752,-46.6537,2026-11-05,alagamento_drenagem
+OC1040,piso para deficientes visuais arrancado em Rua da Escola,-23.56049,-46.64981,2026-11-02,calcada_acessibilidade
+OC1041,pavimento cedeu e abriu um rombo ja houve queda aqui em Rua do Comrcio,-23.55989,-46.65264,2026-11-03,buraco_via
+OC1042,"trecho escuro, medo de passar a noite crianca quase se machucou em Av. Central",-23.55774,-46.64941,2026-11-03,iluminacao
+OC1043,colchao e sofa abandonados na via risco de acidene em Rua da Escola,-23.56256,-46.64992,2026-11-08,lixo_entulho
+OC1044,enxurrada invade as casas da baixada risco de acidente em Praca do Bairro,-23.55836,-46.65022,2026-11-09,alagamento_drenagem
+OC1045,CALCADA ESTREITA E QUEBRADA PARA IDOSOS CRIANCA QUASE SE MACHUCOU EM RUA DA ESCOLA,-23.55744,-46.64819,2026-11-09,calcada_acessibilidade
+OC1046,pavimento cedeu e abriu um rombo risco de acidente em Rua da Escola,-23.55668,-46.6515,2026-11-09,buraco_via
+OC1047,"TRECHO ESCURO, MEDO DE PASSAR A NOITE CRIANCA QUASE SE MACHUCOU EM AV. CENTRAL",-23.55645,-46.64816,2026-11-10,iluminacao
+OC1048,colchao e sofa abandonados na via em Rua das Acacias,-23.55759,-46.6518,2026-11-15,lixo_entulho
+OC1049,bueiro sem tampa e entupido risco de acdente em Travessa Azul,-23.56014,-46.64989,2026-11-03,alagamento_drenagem
+OC1050,piso para deficientes visuais arrancado crianca quase se machucou em Av. Central,-23.5612,-46.64675,2026-11-09,calcada_acessibilidade
+OC1051,pista com depressao funda danificando pneus urgente em Travessa Azul,-23.56132,-46.65186,2026-11-09,buraco_via
+OC1052,"trecho escuro, medo de passar a noite em Rua das Acacias",-23.55792,-46.64649,2026-11-07,iluminacao
+OC1053,caminhao de lixo nao passou esta semana crianca quase se machucou em Rua da Escola,-23.56292,-46.6527,2026-11-07,lixo_entulho
+OC1054,ralo da rua nao escoa a agua crianca quase se machucou em Praca do Bairro,-23.56026,-46.65399,2026-11-01,alagamento_drenagem
+OC1055,piso para deficientes visuais arrancado ja houve queda aqui em Rua do Comercio,-23.56001,-46.65293,2026-11-12,calcada_acessibilidade
+OC1056,motos caem no buraco da via em Praca do Bairro,-23.55883,-46.64763,2026-11-11,buraco_via
+OC1057,"trecho escuro, medo de passar a noite ja houve queda aqui em Rua das Acacias",-23.55923,-46.64721,2026-11-03,iluminacao
+OC1058,restos de obra largados na calcada em Rua das Acacias,-23.56214,-46.65178,2026-11-02,lixo_entulho
+OC1059,agua sobe na rua com qualquer chuva crianca quase se machucou em Rua do Comercio,-23.56115,-46.65132,2026-11-06,alagamento_drenagem
+OC1060,sem rampa para cadeira de rodas no cruzamento risco de acidente em Rua do Comercio,-23.56293,-46.64825,2026-11-11,calcada_acessibilidade
+OC1061,pavimento cedeu e abriu um rombo em Praca do Bairro,-23.56025,-46.64798,2026-11-14,buraco_via
+OC1062,sem luz o poste desde segunda em Praca do Bairro,-23.55753,-46.64894,2026-11-07,iluminacao
+OC1063,caminhao de lixo nao passou esta semana em Rua da Escola,-23.55848,-46.64641,2026-11-12,lixo_entulho
+OC1064,ralo da rua nao escoa a agua urgente em Rua da Escola,-23.55797,-46.64617,2026-11-05,alagamento_drenagem
+OC1065,passeio com buracos para quem usa muleta em Praca do Bairro,-23.55634,-46.65117,2026-11-08,calcada_acessibilidade
+OC1066,pista com depressao funda danificando pneus em Praca do Bairro,-23.56378,-46.65119,2026-11-06,buraco_via
+OC1067,escuridao na praca por falta de lampada crianca quase se machucou em Rua da Escola,-23.56211,-46.64733,2026-11-07,iluminacao
+OC1068,caminhao de lixo nao passou esta semana risco de acidente em Rua da Escola,-23.56238,-46.65001,2026-11-03,lixo_entulho
+OC1069,bueiro sem tampa e entuido em Praca do Bairro,-23.56126,-46.65203,2026-11-04,alagamento_drenagem
+OC1070,passeio com buracos para quem usa muleta em Praca do Bairro,-23.5571,-46.65258,2026-11-02,calcada_acessibilidade
+OC1071,tapa-buraco nuca chegou aqui risco de acidente em Praca do Bairro,-23.55785,-46.64912,2026-11-07,buraco_via
+OC1072,luminaria da rua nao acende em Rua do Comercio,-23.55703,-46.64964,2026-11-10,iluminacao
+OC1073,restos de obra largados na calcada ja houve queda aqui em Travessa Azul,-23.55609,-46.64727,2026-11-08,lixo_entulho
+OC1074,BUEIRO SEM TAMPA E ENTUPIDO RISCO DE ACIDENTE EM RUA DO COMERCIO,-23.56313,-46.64604,2026-11-03,alagamento_drenagem
+OC1075,PASSEIO COM BURACOS PARA QUEM USA MULETA CRIANCA QUASE SE MACHUCOU EM TRAVESSA AZUL,-23.56155,-46.64762,2026-11-01,calcada_acessibilidade
+OC1076,motos caem no buraco da via em Rua da Escola,-23.56283,-46.64864,2026-11-02,buraco_via
+OC1077,sem luz no poste desde segunda urgente em Rua da Escola,-23.5602,-46.65348,2026-11-03,iluminacao
+OC1078,RESTOS DE OBRA LARGADOS NA CALCADA EM RUA DA ESCOLA,-23.5624,-46.64665,2026-11-14,lixo_entulho
+OC1079,enxurrada invade as casas da baixada crianca quase se machucou em Travessa Azul,-23.56006,-46.65295,2026-11-02,alagamento_drenagem
+OC1080,SEM RAMPA PARA CADEIRA DE RODAS NO CRUZAMENTO EM RUA DO COMERCIO,-23.56228,-46.65097,2026-11-10,calcada_acessibilidade
+OC1081,tapa-buraco nunca chegou aqui crianca quase se machucou em Travessa Azul,-23.5627,-46.65316,2026-11-14,buraco_via
+OC1082,luminaria da rua nao acende crianca quase se machucou em Av. Central,-23.56127,-46.65285,2026-11-03,iluminacao
+OC1083,colchao e sofa abandonados na via em Praca do Bairro,-23.56022,-46.65172,2026-11-13,lixo_entulho
+OC1084,ralo da rua nao escoa a agua em Av. Central,-23.55962,-46.65317,2026-11-10,alagamento_drenagem
+OC1085,SEM RAMPA PARA CADEIRA DE RODAS NO CRUZAMENTO EM AV. CENTRAL,-23.5629,-46.65381,2026-11-05,calcada_acessibilidade
+OC1086,tapa-buraco nunca chegou aqui ja houve queda aqui em Rua das Acacias,-23.5622,-46.65284,2026-11-06,buraco_via
+OC1087,escuridao na praca por falta de lampada crianca quase se machucou em Av. Central,-23.55845,-46.64666,2026-11-13,iluminacao
+OC1088,restos de obra largados na calcada crianca quase se machucou em Rua do Comercio,-23.56274,-46.65141,2026-11-14,lixo_entulho
+OC1089,enxurrada invade as casas da baixada urgente em Travessa Azul,-23.56068,-46.64824,2026-11-08,alagamento_drenagem
+OC1090,calcada estreita e quebrada para idosos crianca quase se machucou em Rua das Acacias,-23.55645,-46.65387,2026-11-07,calcada_acessibilidade
+OC1091,motos caem no buraco da via em Travessa Azul,-23.55802,-46.64687,2026-11-07,buraco_via
+OC1092,luminaria da rua nao acende crianca quase se machucou em Av. Central,-23.56036,-46.65123,2026-11-08,iluminacao
+OC1093,caminhao de lixo nao passou esta semana ja houve queda aqui em Av. Central,-23.55796,-46.6472,2026-11-06,lixo_entulho
+OC1094,enxurrada invade as casas da baixada em Av. Central,-23.56023,-46.64785,2026-11-11,alagamento_drenagem
+OC1095,sem rampa para cadeira de rodas no cruzamento crianca quase se machucou em Praca do Bairro,-23.55741,-46.65322,2026-11-13,calcada_acessibilidade
+OC1096,pista com depressao funda danificado pneus em Praca do Bairro,-23.55821,-46.65126,2026-11-08,buraco_via
+OC1097,ESCURIDAO NA PRACA POR FALTA DE LAMPADA RISCO DE ACIDENTE EM RUA DO COMERCIO,-23.55936,-46.65295,2026-11-03,iluminacao
+OC1098,amontoado de lixo atraindo ratos ja houve queda aqui em Rua do Comercio,-23.56042,-46.65177,2026-11-02,lixo_entulho
+OC1099,ralo da rua nao escoa a agua risco de acidente em Av. Central,-23.55628,-46.64659,2026-11-04,alagamento_drenagem
+OC1100,calcada estreita e quebrada para idosos ja houve queda aqui em Travessa Azul,-23.56212,-46.6523,2026-11-01,calcada_acessibilidade

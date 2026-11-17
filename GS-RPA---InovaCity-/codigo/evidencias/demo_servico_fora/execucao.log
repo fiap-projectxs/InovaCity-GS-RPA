@@ -1,0 +1,148 @@
+2026-11-16 19:49:53,600 WARNING OC2027 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:53,801 WARNING OC2027 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:54,201 WARNING OC2027 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:54,202 ERROR OC2027 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:54,202 WARNING OC3204 em quarentena: data invalida (esperado AAAA-MM-DD)
+2026-11-16 19:49:54,203 WARNING OC2012 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:54,404 WARNING OC2012 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:54,805 WARNING OC2012 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:54,805 ERROR OC2012 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:54,807 INFO OC2018 -> revisao humana (conf 0.44)
+2026-11-16 19:49:54,809 WARNING OC2004 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:55,009 WARNING OC2004 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:55,410 WARNING OC2004 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:55,410 ERROR OC2004 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:55,411 INFO OC3104 -> revisao humana (conf 0.24)
+2026-11-16 19:49:55,412 WARNING OC2020 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:55,613 WARNING OC2020 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,013 WARNING OC2020 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,013 ERROR OC2020 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:56,013 WARNING OC3201 em quarentena: texto vazio ou curto
+2026-11-16 19:49:56,015 WARNING OC2011 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,215 WARNING OC2011 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,615 WARNING OC2011 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,616 ERROR OC2011 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:56,617 WARNING OC2007 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:56,817 WARNING OC2007 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:57,218 WARNING OC2007 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:57,218 ERROR OC2007 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:57,219 WARNING OC2025 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:57,420 WARNING OC2025 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:57,820 WARNING OC2025 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:57,820 ERROR OC2025 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:57,822 INFO OC2030 -> revisao humana (conf 0.42)
+2026-11-16 19:49:57,823 WARNING OC2032 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:58,023 WARNING OC2032 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:58,423 WARNING OC2032 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:58,424 ERROR OC2032 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:58,425 INFO OC2037 -> revisao humana (conf 0.42)
+2026-11-16 19:49:58,426 WARNING OC2014 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:58,626 WARNING OC2014 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,027 WARNING OC2014 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,027 ERROR OC2014 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:59,029 WARNING OC2023 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,229 WARNING OC2023 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,630 WARNING OC2023 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,630 ERROR OC2023 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:59,632 WARNING OC2010 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:59,832 WARNING OC2010 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:00,233 WARNING OC2010 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:00,233 ERROR OC2010 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:00,234 WARNING OC2002 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:00,435 WARNING OC2002 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:00,835 WARNING OC2002 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:00,835 ERROR OC2002 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:00,837 WARNING OC2019 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:01,037 WARNING OC2019 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:01,442 WARNING OC2019 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:01,442 ERROR OC2019 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:01,444 WARNING OC2006 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:01,644 WARNING OC2006 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,045 WARNING OC2006 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,045 ERROR OC2006 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:02,047 WARNING OC2003 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,247 WARNING OC2003 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,647 WARNING OC2003 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,648 ERROR OC2003 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:02,649 WARNING OC2022 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:02,850 WARNING OC2022 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:03,250 WARNING OC2022 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:03,250 ERROR OC2022 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:03,252 INFO OC2040 -> revisao humana (conf 0.30)
+2026-11-16 19:50:03,252 WARNING OC3202 em quarentena: coordenada nao numerica
+2026-11-16 19:50:03,253 INFO OC3011 duplicada de OC2011
+2026-11-16 19:50:03,253 INFO OC2029 -> revisao humana (conf 0.43)
+2026-11-16 19:50:03,254 WARNING OC2033 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:03,454 WARNING OC2033 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:03,855 WARNING OC2033 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:03,855 ERROR OC2033 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:03,856 WARNING OC2008 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:04,057 WARNING OC2008 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:04,457 WARNING OC2008 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:04,458 ERROR OC2008 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:04,459 INFO OC3006 duplicada de OC2006
+2026-11-16 19:50:04,460 WARNING OC2028 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:04,661 WARNING OC2028 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,061 WARNING OC2028 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,061 ERROR OC2028 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:05,063 WARNING OC2021 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,263 WARNING OC2021 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,663 WARNING OC2021 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,664 ERROR OC2021 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:05,666 WARNING OC2026 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:05,867 WARNING OC2026 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:06,267 WARNING OC2026 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:06,268 ERROR OC2026 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:06,270 WARNING OC2034 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:06,470 WARNING OC2034 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:06,871 WARNING OC2034 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:06,871 ERROR OC2034 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:06,872 INFO OC3101 -> revisao humana (conf 0.42)
+2026-11-16 19:50:06,874 WARNING OC2013 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:07,074 WARNING OC2013 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:07,474 WARNING OC2013 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:07,475 ERROR OC2013 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:07,476 INFO OC2015 -> revisao humana (conf 0.44)
+2026-11-16 19:50:07,478 WARNING OC2036 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:07,678 WARNING OC2036 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,078 WARNING OC2036 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,079 ERROR OC2036 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:08,081 WARNING OC2017 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,281 WARNING OC2017 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,682 WARNING OC2017 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,682 ERROR OC2017 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:08,683 INFO OC3102 -> revisao humana (conf 0.21)
+2026-11-16 19:50:08,684 WARNING OC2001 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:08,884 WARNING OC2001 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:09,285 WARNING OC2001 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:09,285 ERROR OC2001 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:09,287 INFO OC3103 -> revisao humana (conf 0.24)
+2026-11-16 19:50:09,288 INFO OC2005 -> revisao humana (conf 0.44)
+2026-11-16 19:50:09,288 WARNING OC3203 em quarentena: coordenada fora do intervalo
+2026-11-16 19:50:09,289 INFO OC3001 duplicada de OC2001
+2026-11-16 19:50:09,290 WARNING OC2031 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:09,491 WARNING OC2031 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:09,891 WARNING OC2031 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:09,891 ERROR OC2031 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:09,893 WARNING OC2039 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:10,093 WARNING OC2039 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:10,494 WARNING OC2039 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:10,494 ERROR OC2039 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:10,496 WARNING OC2024 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:10,696 WARNING OC2024 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,097 WARNING OC2024 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,097 ERROR OC2024 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:11,099 INFO OC2009 -> revisao humana (conf 0.38)
+2026-11-16 19:50:11,100 WARNING OC2035 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,300 WARNING OC2035 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,701 WARNING OC2035 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,701 ERROR OC2035 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:11,703 WARNING OC2038 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:11,903 WARNING OC2038 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:12,304 WARNING OC2038 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:12,304 ERROR OC2038 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:12,306 WARNING OC2016 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:12,506 WARNING OC2016 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:12,906 WARNING OC2016 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:50:12,907 ERROR OC2016 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:50:12,908 INFO RELATORIO {"entrada": "/home/claude/entregas/rpa/dados/entrada_ocorrencias.csv", "status": "ok", "lidas": 51, "invalidas": 4, "ja_processadas": 0, "duplicadas": 3, "revisao_humana": 12, "processadas": 32, "notificadas": 0, "notificacao_pendente": 32, "retries_falhos": 96, "duracao_s": 19.33}

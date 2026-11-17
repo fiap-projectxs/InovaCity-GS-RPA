@@ -1,0 +1,44 @@
+{
+  "n_treino": 200,
+  "n_teste": 100,
+  "acuracia_total": 0.8,
+  "enviados_a_revisao": 51,
+  "n_automaticos": 49,
+  "acuracia_automaticos": 0.898,
+  "confusoes": {
+    "calcada_acessibilidade->buraco_via": 4,
+    "alagamento_drenagem->buraco_via": 3,
+    "lixo_entulho->buraco_via": 3,
+    "alagamento_drenagem->iluminacao": 3,
+    "iluminacao->alagamento_drenagem": 2,
+    "iluminacao->calcada_acessibilidade": 2,
+    "buraco_via->iluminacao": 1,
+    "buraco_via->lixo_entulho": 1,
+    "alagamento_drenagem->calcada_acessibilidade": 1
+  }
+}
+
+ERROS (ate 15):
+- 'agua sobe na rua com qualquer chuva em Praca do Bairro': real=alagamento_drenagem previsto=buraco_via conf=0.34
+- 'pavimento cedeu e abriu um rombo em Travessa Azul': real=buraco_via previsto=iluminacao conf=0.30
+- 'enxurrada invade as casas da baixada risco de acidente em Rua das Acacias': real=alagamento_drenagem previsto=buraco_via conf=0.32
+- 'trecho escuro, medo de passar a noite risco de acidente em Rua da Escola': real=iluminacao previsto=alagamento_drenagem conf=0.25
+- 'pavimento cedeu e abriu um rombo ja houve queda aqui em Rua do Comrcio': real=buraco_via previsto=lixo_entulho conf=0.25
+- 'colchao e sofa abandonados na via risco de acidene em Rua da Escola': real=lixo_entulho previsto=buraco_via conf=0.53
+- 'enxurrada invade as casas da baixada risco de acidente em Praca do Bairro': real=alagamento_drenagem previsto=buraco_via conf=0.37
+- 'colchao e sofa abandonados na via em Rua das Acacias': real=lixo_entulho previsto=buraco_via conf=0.55
+- 'piso para deficientes visuais arrancado ja houve queda aqui em Rua do Comercio': real=calcada_acessibilidade previsto=buraco_via conf=0.24
+- 'passeio com buracos para quem usa muleta em Praca do Bairro': real=calcada_acessibilidade previsto=buraco_via conf=0.61
+- 'bueiro sem tampa e entuido em Praca do Bairro': real=alagamento_drenagem previsto=iluminacao conf=0.32
+- 'passeio com buracos para quem usa muleta em Praca do Bairro': real=calcada_acessibilidade previsto=buraco_via conf=0.61
+- 'luminaria da rua nao acende em Rua do Comercio': real=iluminacao previsto=alagamento_drenagem conf=0.31
+- 'PASSEIO COM BURACOS PARA QUEM USA MULETA CRIANCA QUASE SE MACHUCOU EM TRAVESSA AZUL': real=calcada_acessibilidade previsto=buraco_via conf=0.26
+- 'enxurrada invade as casas da baixada crianca quase se machucou em Travessa Azul': real=alagamento_drenagem previsto=iluminacao conf=0.30
+
+LIMIAR x cobertura x acuracia (informativo; limiar usado foi fixado antes: 0.45)
+  0.30: automaticos= 85 acuracia=0.871
+  0.35: automaticos= 77 acuracia=0.909
+  0.40: automaticos= 65 acuracia=0.923
+  0.45: automaticos= 49 acuracia=0.898
+  0.50: automaticos= 45 acuracia=0.889
+  0.60: automaticos= 34 acuracia=0.912

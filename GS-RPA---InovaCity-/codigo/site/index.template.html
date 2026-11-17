@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robô de triagem InovaCity – AI for RPA</title>
+<meta name="description" content="Robô que lê relatos de moradores, valida, classifica, remove duplicatas, prioriza e encaminha. Execução real, resultados medidos, falhas tratadas.">
+<style>
+:root{
+  --navy:#012B58; --navy-2:#0B3D75; --teal:#039882; --teal-ink:#02705F; --orange:#FB6702; --orange-ink:#B54300;
+  --paper:#F4F7F9; --white:#fff; --line:#D3DDE6; --mute:#52667C; --soft-teal:#E3F4F0; --soft-orange:#FFEBDD; --soft-navy:#E4EBF4;
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,"Iowan Old Style",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--paper);color:var(--navy);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--navy-2)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-.01em;line-height:1.12;margin:0}
+h1{font-size:clamp(1.9rem,3.7vw,2.9rem);font-weight:700;max-width:18ch;text-wrap:balance}
+h2{font-size:clamp(1.55rem,2.6vw,2.1rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 .9em;max-width:68ch}
+code,.mono{font-family:var(--mono);font-size:.88em}
+code{background:var(--soft-navy);padding:.1em .35em;border-radius:4px}
+/* topo */
+.top{position:sticky;top:0;z-index:20;background:rgba(244,247,249,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;text-decoration:none;color:var(--navy)}
+.brand img{height:42px;width:auto}
+.top nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.top nav a{padding:6px 10px;border-radius:6px;text-decoration:none;font-size:.9rem;color:var(--navy)}
+.top nav a:hover{background:var(--soft-navy)}
+@media(max-width:860px){.top nav{display:none}}
+/* hero */
+.hero{padding:34px 0 8px}
+.hero-top{display:grid;grid-template-columns:1fr 1.05fr;gap:12px 48px;align-items:end}
+@media(max-width:900px){.hero-top{grid-template-columns:1fr}}
+.hero .lede{font-size:1.02rem;color:var(--mute);margin:0 0 8px;max-width:60ch}
+.hero .by{font-size:.86rem;color:var(--mute);margin:0}
+/* palco */
+.stage{margin-top:30px;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stage-head{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--navy);color:#fff}
+.stage-head .t{font-family:var(--serif);font-weight:700;margin-right:auto}
+.btn{appearance:none;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;padding:6px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{background:rgba(255,255,255,.12)}
+.btn.main{background:var(--orange);border-color:var(--orange);color:#1b0b00;font-weight:700}
+.btn.main:hover{background:#ff7a22}
+.stage select{font:inherit;font-size:.9rem;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:var(--navy-2);color:#fff}
+.stage-body{display:grid;grid-template-columns:1.25fr 1fr;gap:0}
+@media(max-width:900px){.stage-body{grid-template-columns:1fr}}
+.col-l{padding:16px;border-right:1px solid var(--line)}
+.col-r{padding:16px;background:#FAFCFD;display:flex;flex-direction:column;gap:14px}
+@media(max-width:900px){.col-l{border-right:0;border-bottom:1px solid var(--line)}}
+.lab{font-size:.85rem;color:var(--mute);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px}
+.queue{display:flex;flex-wrap:wrap;gap:4px;min-height:74px;padding:8px;border:1px dashed var(--line);border-radius:10px;background:var(--paper)}
+.chip{width:30px;height:26px;border-radius:6px;font:600 10px/26px var(--mono);text-align:center;color:var(--navy);background:var(--white);border:1px solid var(--line);position:relative;user-select:none}
+.chip.gone{visibility:hidden}
+.chip.processada{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip.processada.alta::after{content:"";position:absolute;right:-3px;top:-3px;width:9px;height:9px;border-radius:50%;background:var(--orange);border:2px solid #fff}
+.chip.processada.pendente{background:repeating-linear-gradient(135deg,var(--teal) 0 4px,#2fb5a1 4px 8px)}
+.chip.revisao{background:var(--orange);border-color:var(--orange);color:#1b0b00}
+.chip.quarentena{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip.duplicada{background:var(--white);border:2px dashed var(--navy-2);color:var(--navy)}
+button.chip{cursor:pointer;padding:0}
+.bins{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+@media(min-width:1000px){.bins{grid-template-columns:repeat(2,1fr)}}
+.bin{border:1px solid var(--line);border-radius:10px;padding:10px;min-height:112px;background:var(--white)}
+.bin header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.bin h3{font-size:1rem}
+.bin .n{font:700 1.3rem var(--serif)}
+.bin .grid{display:flex;flex-wrap:wrap;gap:4px}
+.bin.processada{border-top:4px solid var(--teal)}.bin.revisao{border-top:4px solid var(--orange)}
+.bin.quarentena{border-top:4px solid var(--navy)}.bin.duplicada{border-top:4px dashed var(--navy-2)}
+.bin small{display:block;color:var(--mute);font-size:.8rem;margin-top:6px;line-height:1.35}
+.fly{position:fixed;z-index:50;pointer-events:none;margin:0}
+.now{border:1px solid var(--line);border-radius:10px;background:var(--white);padding:12px 14px;min-height:170px}
+.now .id{font:700 .95rem var(--mono)}
+.now .txt{font-family:var(--serif);font-size:1.12rem;line-height:1.35;margin:6px 0 10px}
+.now dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:.9rem}
+.now dt{color:var(--mute)}.now dd{margin:0}
+.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.8rem;font-weight:600}
+.tag.processada{background:var(--soft-teal);color:var(--teal-ink)}.tag.revisao{background:var(--soft-orange);color:var(--orange-ink)}
+.tag.quarentena{background:var(--soft-navy);color:var(--navy)}.tag.duplicada{background:var(--white);border:1px dashed var(--navy-2);color:var(--navy)}
+.logbox{font:12.5px/1.55 var(--mono);background:var(--navy);color:#CFE0F3;border-radius:10px;padding:10px 12px;height:210px;overflow:auto}
+.logbox .w{color:#FFC48F}.logbox .e{color:#FF9C9C}.logbox .k{color:#7FE0CE}
+.logbox div{white-space:pre-wrap;overflow-wrap:anywhere}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--mute);margin-top:12px}
+.legend i{display:inline-block;width:14px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.sumline{padding:12px 16px;border-top:1px solid var(--line);font-size:.95rem;background:var(--soft-teal);color:var(--navy);display:none}
+.sumline.on{display:block}
+/* secoes */
+section.s{padding:64px 0 8px}
+.led{display:grid;grid-template-columns:240px 1fr;gap:12px 40px;align-items:start}
+@media(max-width:860px){.led{grid-template-columns:1fr}}
+.led>*{min-width:0}
+.led>div:first-child{position:sticky;top:76px;align-self:start}
+@media(max-width:860px){.led>div:first-child{position:static}}
+.led h2+p.sub{color:var(--mute);font-size:.95rem;margin-top:8px}
+/* fluxo */
+.flow{list-style:none;margin:0;padding:0;border-left:3px solid var(--teal)}
+.flow li{padding:0 0 22px 22px;position:relative}
+.flow li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--white);border:3px solid var(--teal)}
+.flow li.h::before{border-color:var(--orange)}
+.flow b{font-family:var(--serif);font-size:1.1rem}
+.flow .fail{display:block;color:var(--mute);font-size:.92rem}
+.flow .fail em{font-style:normal;font-weight:600;color:var(--orange-ink)}
+/* tabelas */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--white);color:var(--navy);padding:7px 12px;border-radius:8px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab .c{opacity:.7;margin-left:6px}
+.find{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;width:100%;max-width:340px;margin-bottom:12px;background:var(--white)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--white)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute);background:#FAFCFD;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.id{font:600 .85rem var(--mono);white-space:nowrap}
+.bar{display:inline-block;width:70px;height:8px;background:var(--soft-navy);border-radius:4px;vertical-align:middle;margin-right:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal)}
+.bar.lo i{background:var(--orange)}
+.pr-alta{color:var(--orange-ink);font-weight:700}
+.note{font-size:.9rem;color:var(--mute)}
+/* medicao */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;border:1px solid var(--line);border-radius:12px;background:var(--white);margin-bottom:20px}
+.kpi{padding:14px 16px;border-right:1px solid var(--line)}.kpi:last-child{border-right:0}
+.kpi b{font:700 1.8rem var(--serif);display:block;line-height:1.1}
+.kpi span{font-size:.88rem;color:var(--mute)}
+.chart{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .lg{display:flex;gap:18px;font-size:.85rem;color:var(--mute);margin-top:6px}
+details{border:1px solid var(--line);border-radius:10px;background:var(--white);margin-top:14px}
+summary{cursor:pointer;padding:10px 14px;font-weight:600}
+details .tw{border:0;border-top:1px solid var(--line);border-radius:0}
+.cf{display:grid;gap:6px;margin-top:6px}
+.cf div{display:grid;grid-template-columns:minmax(220px,300px) 1fr 28px;gap:10px;align-items:center;font-size:.88rem}
+.cf .b{height:10px;background:var(--orange);border-radius:3px}
+/* falhas */
+.fx{border:1px solid var(--line);border-radius:12px;background:var(--white);margin-bottom:14px;overflow:hidden}
+.fx>div{padding:14px 16px}
+.fx h3{margin-bottom:4px}
+.fx .cmd{font:13px var(--mono);background:var(--soft-navy);padding:8px 12px;border-radius:8px;display:block;overflow-x:auto;margin:8px 0}
+.fx pre{margin:0;padding:12px 16px;background:var(--navy);color:#CFE0F3;font:12.5px/1.55 var(--mono);overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.fx .res{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.9rem;margin-top:6px}
+.ok{color:var(--teal-ink);font-weight:700}
+/* temas */
+.theme{display:grid;grid-template-columns:200px 1fr 1fr;gap:6px 24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.theme:first-of-type{border-top:1px solid var(--line)}
+.theme h3{font-size:1.05rem}
+.theme small{display:block;color:var(--mute);font-size:.8rem;font-weight:400;font-family:var(--sans);margin-top:2px}
+@media(max-width:860px){.theme{grid-template-columns:1fr}}
+/* barema */
+.bar-w{font:700 1.1rem var(--serif);white-space:nowrap}
+/* executar */
+.cb{position:relative;margin:10px 0}
+.cb pre{margin:0;background:var(--navy);color:#E6F0FA;padding:14px 16px;border-radius:10px;overflow-x:auto;font:13px/1.6 var(--mono)}
+.cb button{position:absolute;right:8px;top:8px;font-size:.8rem;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:6px;padding:3px 9px;cursor:pointer}
+.cb button:hover{background:rgba(255,255,255,.14)}
+.dl{display:inline-block;margin:4px 8px 4px 0;padding:9px 14px;border-radius:8px;border:1px solid var(--navy);text-decoration:none;font-weight:600;color:var(--navy);background:var(--white)}
+.dl:hover{background:var(--soft-navy)}
+footer{margin-top:72px;background:var(--navy);color:#CFE0F3;padding:32px 0 40px}
+footer a{color:#fff}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;font-size:.92rem}
+footer .tl{font:italic 700 1.1rem var(--serif);color:#FFC48F}
+.sr{position:absolute;left:-9999px}
+
+/* teste com arquivo */
+.try{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px}
+.try .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.try .b2{font:inherit;font-size:.92rem;border:1px solid var(--navy);background:var(--white);color:var(--navy);padding:7px 12px;border-radius:8px;cursor:pointer}
+.try .b2:hover{background:var(--soft-navy)}.try .b2.pri{background:var(--navy);color:#fff}
+.try input[type=file]{font:inherit;font-size:.9rem;max-width:100%}
+.try .hint{font-size:.88rem;color:var(--mute);margin:6px 0 0}
+#tOut{margin-top:16px}
+#tInterp{background:var(--soft-teal);border-left:4px solid var(--teal);border-radius:8px;padding:12px 16px;margin:14px 0}
+#tInterp p{margin:0 0 .6em;max-width:none}#tInterp p:last-child{margin:0}
+#tErr{color:var(--orange-ink);font-weight:600}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#topo"><img src="data:image/png;base64,__LOGO__" alt="InovaCity"><span>Robô de triagem</span></a>
+  <nav aria-label="Seções">
+    <a href="#testar">Teste com arquivo</a><a href="#fluxo">Fluxo</a><a href="#resultados">Resultados</a><a href="#medicao">Medição</a><a href="#falhas">Falhas tratadas</a><a href="#temas">Temas</a><a href="#barema">Barema</a><a href="#executar">Executar</a><a href="landing.html" id="sair">Sair</a>
+  </nav>
+</div></header>
+
+<main id="topo">
+<div class="wrap">
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-top"><h1 id="h1">51 relatos entram. O robô decide o destino de cada um.</h1>
+  <div><p class="lede">Moradores do bairro-piloto da InovaCity relatam buracos, postes apagados, lixo, alagamentos e calçadas sem rampa. O robô valida, classifica, descarta duplicatas, prioriza e encaminha. O que ele não sabe resolver vai para uma pessoa. Reproduza a execução abaixo: cada linha do log e cada decisão vieram dos arquivos que o robô gerou.</p>
+  <p class="by">AI for Robotic Process Automation · Global Solution 2026.2</p></div></div>
+
+  <div class="stage" id="palco">
+    <div class="stage-head">
+      <span class="t">Execução de 16/11/2026</span>
+      <button class="btn main" id="bPlay" type="button">Reproduzir</button>
+      <button class="btn" id="bStep" type="button">Próximo relato</button>
+      <button class="btn" id="bEnd" type="button">Ir ao fim</button>
+      <button class="btn" id="bReset" type="button">Reiniciar</button>
+      <label class="sr" for="sSpeed">Velocidade</label>
+      <select id="sSpeed"><option value="700">Lento</option><option value="380" selected>Normal</option><option value="140">Rápido</option></select>
+    </div>
+    <div class="stage-body">
+      <div class="col-l">
+        <p class="lab"><span>Fila de entrada: <b id="qLeft">51</b> relatos esperando</span><span id="progTxt"></span></p>
+        <div class="queue" id="queue" role="list" aria-label="Fila de entrada"></div>
+        <div class="bins" id="bins"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--teal)"></i>processada</span>
+          <span><i style="background:var(--teal);box-shadow:inset -6px -6px 0 -3px var(--orange)"></i>com ponto laranja: prioridade alta</span>
+          <span><i style="background:repeating-linear-gradient(135deg,var(--teal) 0 3px,#2fb5a1 3px 6px)"></i>sem protocolo (serviço fora)</span>
+          <span><i style="background:var(--orange)"></i>revisão humana</span>
+          <span><i style="background:var(--navy)"></i>quarentena</span>
+          <span><i style="background:#fff;border:2px dashed var(--navy-2)"></i>duplicada</span>
+        </div>
+      </div>
+      <div class="col-r">
+        <div><p class="lab">Relato em análise <span class="note">clique em um quadrado para ver</span></p><div class="now" id="now" aria-live="off"></div></div>
+        <div><p class="lab">Log do robô <span class="note">execucao.log</span></p><div class="logbox" id="logbox" tabindex="0" aria-label="Log de execução"></div></div>
+      </div>
+    </div>
+    <div class="sumline" id="sumline"></div>
+  </div>
+</section>
+
+<section class="s" id="testar" aria-labelledby="htt"><div class="led">
+  <div><h2 id="htt">Teste com seu arquivo</h2><p class="sub">Escolha um CSV e veja a triagem e uma interpretação do resultado.</p></div>
+  <div class="try">
+    <div class="row">
+      <input type="file" id="tFile" accept=".csv,text/csv" aria-label="Escolher arquivo CSV">
+      <button class="b2 pri" type="button" id="tEx1">Usar exemplo 1 (básico)</button>
+      <button class="b2" type="button" id="tEx2">Usar exemplo 2 (difícil)</button>
+    </div>
+    <div id="tOut" aria-live="polite"></div>
+  </div>
+</div></section>
+
+<section class="s" id="fluxo" aria-labelledby="hf"><div class="led">
+  <div><h2 id="hf">O que o robô faz</h2><p class="sub">Ponto de entrada: <code>python main.py</code>. Sem intervenção durante a execução.</p></div>
+  <ol class="flow">
+    <li><b>Leitura</b> do CSV de ocorrências.<span class="fail"><em>Se o arquivo não existe:</em> registra o erro, grava um relatório com status próprio e encerra sem exceção.</span></li>
+    <li><b>Validação</b> de texto, coordenadas e data.<span class="fail"><em>Se o dado é inválido:</em> a linha vai para a quarentena com o motivo e o robô segue.</span></li>
+    <li><b>Classificação</b> por NLP (TF-IDF e regressão logística), com confiança.<span class="fail"><em>Se a confiança é menor que 0,45:</em> o relato vai para a fila de revisão humana.</span></li>
+    <li><b>Duplicidade</b>: mesma categoria, até 150 m de distância e texto parecido.<span class="fail"><em>Se já existe chamado igual:</em> não abre outro, aponta o original.</span></li>
+    <li><b>Prioridade</b> por regras com sinais de risco (queda, criança, cadeirante, invasão de água).<span class="fail"><em>Sem sinais:</em> a base da categoria decide.</span></li>
+    <li class="h"><b>Notificação</b> a um serviço externo simulado, com 3 tentativas e espera crescente.<span class="fail"><em>Se o serviço não responde:</em> o item vai para as notificações pendentes e o robô continua.</span></li>
+    <li><b>Relatório</b> da execução, filas em CSV e registro de IDs já tratados.<span class="fail"><em>Se rodar de novo:</em> não reprocessa nada (idempotência).</span></li>
+  </ol>
+</div>
+</section>
+
+<section class="s" id="resultados" aria-labelledby="hr"><div class="led">
+  <div><h2 id="hr">Resultados da execução</h2><p class="sub">As mesmas 51 linhas, agora como as filas que o robô entrega.</p></div>
+  <div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <input class="find" id="find" type="search" placeholder="Filtrar por texto ou ID" aria-label="Filtrar relatos">
+    <div class="tw"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+    <p class="note" style="margin-top:10px">As filas de prioridade alta aparecem primeiro nos arquivos <code>fila_processadas.csv</code>. Os textos são sintéticos: nenhum dado pessoal real.</p>
+  </div>
+</div></section>
+
+<section class="s" id="medicao" aria-labelledby="hm"><div class="led">
+  <div><h2 id="hm">O que foi medido</h2><p class="sub">Resultado honesto, com tamanho de amostra e limites.</p></div>
+  <div>
+    <div class="kpis" id="kpis"></div>
+    <p>O conjunto de teste tem 100 relatos rotulados, escritos com frases diferentes das 200 de treino. O teste é deliberadamente mais difícil que uma divisão aleatória. O limiar de 0,45 foi fixado antes de ver o resultado. A varredura abaixo é só informativa.</p>
+    <div class="chart"><svg id="svg" viewBox="0 0 640 260" role="img" aria-label="Acurácia e cobertura conforme o limiar de confiança"></svg>
+      <div class="lg"><span><b style="color:var(--teal-ink)">Linha verde:</b> acurácia entre os decididos automaticamente</span><span><b style="color:var(--orange-ink)">Linha laranja:</b> parcela dos 100 relatos decidida sem humano</span></div></div>
+    <details><summary>Os 20 erros do teste e o que eles mostram</summary>
+      <div class="tw"><table><thead><tr><th>Relato</th><th>Correto</th><th>Previsto</th><th>Confiança</th></tr></thead><tbody id="errs"></tbody></table></div>
+    </details>
+    <div class="cf" id="cf"></div>
+    <p style="margin-top:14px">Os erros vêm de vocabulário que não aparece no treino (“enxurrada”, “pavimento cedeu”, “colchão e sofá abandonados”). Metade deles prevê <code>buraco_via</code>. Alguns saem com confiança alta (até 0,61), então o limiar não os pega. Com 200 exemplos sintéticos, o desempenho em relatos reais de moradores pode ser pior.</p>
+  </div>
+</div></section>
+
+<section class="s" id="falhas" aria-labelledby="hfa"><div class="led">
+  <div><h2 id="hfa">Falhas tratadas e demonstradas</h2><p class="sub">Cada uma foi provocada de propósito. Os trechos abaixo são do log real.</p></div>
+  <div id="falhasBox"></div>
+</div></section>
+
+<section class="s" id="temas" aria-labelledby="ht"><div class="led">
+  <div><h2 id="ht">Temas da disciplina</h2><p class="sub">Quatro temas, cada um com função real no fluxo.</p></div>
+  <div>
+    <div class="theme"><h3>Hiperautomação<small>RPA, IA, regras e pessoas juntos</small></h3><p>Orquestra o fluxo inteiro em <code>pipeline.py</code>: para cada relato, decide o que o robô resolve sozinho e o que escala para uma pessoa.</p><p>O problema não se resolve só com RPA nem só com IA: a classificação é incerta e parte dos casos precisa de juízo humano.</p></div>
+    <div class="theme"><h3>Processos, tarefas e BPM/BPMN<small>processo desenhado antes do código</small></h3><p>O processo está modelado em BPMN (diagrama no relatório) e o código tem uma tarefa por módulo.</p><p>Com tantas exceções (arquivo ilegível, dado inválido, baixa confiança, duplicidade, serviço fora do ar), cada saída precisa ter um destino explícito.</p></div>
+    <div class="theme"><h3>RPA com arquivos<small>CSV, JSON, log</small></h3><p>Lê o CSV de entrada e grava as filas em CSV, o relatório em JSON, o log e o registro de IDs já tratados.</p><p>Os relatos entram e saem como arquivos, porque o protótipo não assume integração com a prefeitura. Arquivo ausente não derruba a execução.</p></div>
+    <div class="theme"><h3>RPA com IA: tarefas inteligentes<small>NLP, regras e similaridade</small></h3><p>Classifica por NLP (TF-IDF e regressão logística), valida e prioriza por regras e detecta duplicidade por similaridade (Jaccard e haversine).</p><p>IA onde ela agrega, regras onde a decisão precisa ser auditável. Roda sem GPU e sem chave de API.</p></div>
+    </div></section>
+
+<section class="s" id="barema" aria-labelledby="hb"><div class="led">
+  <div><h2 id="hb">Onde está cada critério do barema</h2><p class="sub">Para quem avalia.</p></div>
+  <div class="tw"><table>
+    <thead><tr><th>Critério</th><th>Peso</th><th>Onde ver</th></tr></thead>
+    <tbody>
+      <tr><td>Uso dos temas da disciplina</td><td class="bar-w">30%</td><td>4 temas com função e justificativa em <a href="#temas">Temas</a>; ligação com cada etapa em <a href="#fluxo">Fluxo</a>.</td></tr>
+      <tr><td>Funcionamento ponta a ponta e reprodutibilidade</td><td class="bar-w">25%</td><td>Execução completa no <a href="#palco">palco</a>; comandos em <a href="#executar">Executar</a>; entrada única <code>main.py</code>.</td></tr>
+      <tr><td>Resiliência e segurança</td><td class="bar-w">20%</td><td><a href="#falhas">Falhas tratadas</a>: log, quarentena, retry com espera, idempotência, relatório e revisão humana. Chaves só por variável de ambiente.</td></tr>
+      <tr><td>Evidências de validação</td><td class="bar-w">15%</td><td><a href="#medicao">Medição</a>: teste rotulado, análise de erros e limites, mais 9 testes automatizados.</td></tr>
+      <tr><td>Dados, ética, ODS e organização</td><td class="bar-w">10%</td><td><a href="#etica">Dados, ética e ODS</a>; README e relatório no pacote.</td></tr>
+    </tbody></table></div>
+</div></section>
+
+<section class="s" id="etica" aria-labelledby="he"><div class="led">
+  <div><h2 id="he">Dados, ética e ODS</h2></div>
+  <div>
+    <p><b>Dados.</b> Todos os dados são sintéticos. O relato não tem nome, telefone nem CPF, e nenhum dado pessoal real chega a qualquer API. O uso de LLM é opcional e fica desligado: sem chave, ou se a chamada falhar, o robô usa o texto original. Chaves só existem como variável de ambiente.</p>
+    <p><b>Ética.</b> O robô não decide quando está incerto: relato de baixa confiança vai para uma pessoa. O maior risco é o viés territorial, porque bairros ou grupos que relatam mais seriam atendidos primeiro. Isso pede acompanhar quem está sendo atendido, não só o que foi priorizado.</p>
+    <p><b>ODS.</b> ODS 9 (infraestrutura resiliente), ODS 11 (cidades sustentáveis) e ODS 10 (priorizar acessibilidade reduz desigualdade de acesso). A contribuição é potencial: o protótipo não foi testado com moradores reais.</p>
+    <h3 style="margin:18px 0 6px">Limites</h3>
+    <p>Dados sintéticos: o desempenho real não foi medido. O serviço de notificação é simulado e não há integração com a prefeitura. O gancho de LLM é um stub não testado. Prioridade por palavras-chave pode falhar com sinônimos e não foi validada com especialistas. Os limiares de duplicidade (150 m e 0,6) não foram calibrados com dados reais.</p>
+  </div>
+</div></section>
+
+<section class="s" id="executar" aria-labelledby="hx"><div class="led">
+  <div><h2 id="hx">Executar</h2><p class="sub">Python 3.10 ou mais novo. Só depende de scikit-learn.</p></div>
+  <div>
+    <div class="cb"><pre>pip install -r requirements.txt
+python main.py                 # execução completa; saídas em saida/
+python avaliar.py              # acurácia no conjunto de teste
+python -m unittest tests.test_rpa</pre><button type="button" data-copy>Copiar</button></div>
+    <p>Para repetir as demonstrações de falha:</p>
+    <div class="cb"><pre>python main.py --entrada nao_existe.csv --saida saida/demo_entrada_ausente
+python main.py --saida saida/demo_servico_fora --simular-servico-fora
+python main.py                 # 2ª execução mostra a idempotência</pre><button type="button" data-copy>Copiar</button></div>
+    <p>Para gerar de novo este site a partir das saídas: <code>python site/build_site.py</code></p>
+    <p style="margin-top:14px"><a class="dl" href="../Relatorio_RPA_InovaCity.docx">Relatório (.docx)</a><a class="dl" href="../Relatorio_RPA_InovaCity.pdf">Relatório (.pdf)</a><a class="dl" href="../codigo/README.md">README do código</a></p>
+  </div>
+</div></section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div><div class="tl">Conectando pessoas. Transformando cidades.</div><div>InovaCity · FIAP · Tecnologia em Inteligência Artificial · novembro de 2026</div></div>
+</div></footer>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = s => document.querySelector(s), pct = (x,d=0) => (x*100).toFixed(d).replace(".",",")+"%";
+const CAT = {buraco_via:"buraco na via",iluminacao:"iluminação",lixo_entulho:"lixo e entulho",alagamento_drenagem:"alagamento e drenagem",calcada_acessibilidade:"calçada e acessibilidade"};
+const RES = {processada:"Processadas",revisao:"Revisão humana",quarentena:"Quarentena",duplicada:"Duplicadas"};
+const BINTXT = {processada:"Classificadas, priorizadas e notificadas",revisao:"O robô não tem confiança; uma pessoa decide",quarentena:"Dado inválido, com o motivo registrado",duplicada:"Já existe chamado para o mesmo problema"};
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const itens = D.itens;
+const cls = it => it.res + (it.res==="processada" ? (it.prio==="alta"?" alta":"") + (it.pendente?" pendente":"") : "");
+
+/* ---------- palco ---------- */
+const queue=$("#queue"), binsEl=$("#bins"), logbox=$("#logbox"), now=$("#now");
+let idx=0, playing=false, timer=null, busy=false;
+const counts={processada:0,revisao:0,quarentena:0,duplicada:0};
+function chipEl(it, tag="button"){const c=document.createElement(tag);c.className="chip "+cls(it);c.textContent=it.id.slice(-4);c.title=it.id+": "+(it.texto||"(texto vazio)");c.dataset.id=it.id;if(tag==="button"){c.type="button";c.setAttribute("aria-label","Ver relato "+it.id);}return c;}
+function buildBins(){
+  binsEl.innerHTML="";
+  for(const k of Object.keys(RES)){
+    const b=document.createElement("div");b.className="bin "+k;
+    b.innerHTML=`<header><h3>${RES[k]}</h3><span class="n" id="n_${k}">0</span></header><div class="grid" id="g_${k}"></div><small>${BINTXT[k]}</small>`;
+    binsEl.appendChild(b);
+  }
+}
+function buildQueue(){
+  queue.innerHTML="";
+  for(const it of itens){const c=document.createElement("span");c.className="chip";c.id="q_"+it.id;c.textContent=it.id.slice(-4);c.title=it.id;c.setAttribute("role","listitem");queue.appendChild(c);}
+}
+function logLine(e){
+  const d=document.createElement("div");
+  const k=e.n==="WARNING"?"w":e.n==="ERROR"?"e":(/processada:/.test(e.m)?"k":"");
+  d.className=k;d.textContent=e.t.toFixed(2).padStart(5," ")+"s  "+e.n.padEnd(7," ")+" "+e.m;
+  logbox.appendChild(d);logbox.scrollTop=logbox.scrollHeight;
+}
+function showNow(it){
+  const rows=[];
+  rows.push(["Destino",`<span class="tag ${it.res}">${RES[it.res]}</span>`]);
+  if(it.cat) rows.push(["Categoria",esc(CAT[it.cat]||it.cat)+" ("+pct(it.conf,0)+" de confiança)"]);
+  if(it.res==="processada"){
+    rows.push(["Prioridade",`<b class="${it.prio==="alta"?"pr-alta":""}">${it.prio}</b>`+(it.sinais?` · sinais: ${esc(it.sinais.replace(/;/g,", "))}`:" · sem sinais de risco")]);
+    rows.push(["Notificação",it.pendente?"sem resposta após 3 tentativas; entrou nas pendentes":("protocolo "+esc(it.prot)+(it.tent?` (após ${it.tent} falha${it.tent>1?"s":""})`:""))]);
+  }
+  if(it.res==="revisao") rows.push(["Motivo",esc(it.motivo)+"; categoria sugerida: "+esc(CAT[it.cat]||it.cat)]);
+  if(it.res==="quarentena") rows.push(["Motivo",esc(it.motivo)]);
+  if(it.res==="duplicada") rows.push(["Duplicada de",esc(it.dup)]);
+  rows.push(["Local e data",esc(it.lat)+", "+esc(it.lon)+" · "+esc(it.data)]);
+  now.innerHTML=`<div class="id">${it.id}</div><div class="txt">${it.texto?"“"+esc(it.texto)+"”":"<i>(texto vazio)</i>"}</div><dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("")}</dl>`;
+}
+function place(it, animate){
+  const q=$("#q_"+it.id), grid=$("#g_"+it.res), c=chipEl(it);
+  grid.appendChild(c); counts[it.res]++; $("#n_"+it.res).textContent=counts[it.res];
+  const done=()=>{q.classList.add("gone");};
+  if(animate&&!reduce&&q){
+    const a=q.getBoundingClientRect(), b=c.getBoundingClientRect();
+    c.style.visibility="hidden";
+    const f=chipEl(it,"span");f.classList.add("fly");f.style.left=a.left+"px";f.style.top=a.top+"px";document.body.appendChild(f);
+    const an=f.animate([{transform:"translate(0,0) scale(1.15)"},{transform:`translate(${b.left-a.left}px,${b.top-a.top}px) scale(1)`}],{duration:Math.min(420,+$("#sSpeed").value*.9),easing:"cubic-bezier(.3,.7,.2,1)"});
+    an.onfinish=()=>{f.remove();c.style.visibility="";done();};
+    an.oncancel=()=>{f.remove();c.style.visibility="";done();};
+  } else done();
+  c.addEventListener("click",()=>{pause();showNow(it);});
+}
+function updateProg(){
+  $("#qLeft").textContent=itens.length-idx;
+  $("#progTxt").textContent=idx+" de "+itens.length;
+}
+function step(animate=true){
+  if(idx>=itens.length) return false;
+  const it=itens[idx++];
+  D.eventos.filter(e=>e.id===it.id).forEach(logLine);
+  showNow(it); place(it,animate); updateProg();
+  if(idx>=itens.length) finish();
+  return true;
+}
+function finish(){
+  pause(true);
+  const r=D.rel1;
+  logLine({t:r.duracao_s,n:"INFO",m:`RELATORIO ${r.lidas} lidas · ${r.processadas} processadas (${r.notificadas} notificadas, ${r.notificacao_pendente} pendentes) · ${r.revisao_humana} em revisão · ${r.invalidas} em quarentena · ${r.duplicadas} duplicadas · ${r.retries_falhos} tentativas falhas absorvidas`});
+  const s=$("#sumline");s.classList.add("on");
+  s.innerHTML=`<b>Fim em ${String(r.duracao_s).replace(".",",")} s.</b> De ${r.lidas} linhas: ${r.processadas} processadas, ${r.revisao_humana} para uma pessoa, ${r.invalidas} em quarentena e ${r.duplicadas} duplicadas. O serviço externo falhou ${r.retries_falhos} vezes e o robô seguiu: só ${r.notificacao_pendente} ficaram sem protocolo.`;
+  $("#bPlay").textContent="Reproduzir de novo";
+}
+function tick(){ if(!playing) return; if(!step()){return;} timer=setTimeout(tick,+$("#sSpeed").value); }
+function play(){
+  if(idx>=itens.length) reset();
+  playing=true;$("#bPlay").textContent="Pausar";clearTimeout(timer);timer=setTimeout(tick,60);
+}
+function pause(fim){playing=false;clearTimeout(timer);if(!fim)$("#bPlay").textContent=idx>0&&idx<itens.length?"Continuar":"Reproduzir";}
+function reset(){
+  pause();idx=0;for(const k in counts)counts[k]=0;
+  buildBins();buildQueue();logbox.innerHTML="";$("#sumline").classList.remove("on");
+  now.innerHTML='<div class="txt" style="color:var(--mute)">Aperte Reproduzir. O primeiro relato aparece aqui.</div>';
+  updateProg();$("#bPlay").textContent="Reproduzir";
+}
+function toEnd(){pause();while(idx<itens.length)step(false);}
+$("#bPlay").onclick=()=>playing?pause():play();
+$("#bStep").onclick=()=>{pause();step();};
+$("#bEnd").onclick=toEnd;
+$("#bReset").onclick=reset;
+reset();
+if(reduce) toEnd(); else setTimeout(play,900);
+
+/* ---------- filas ---------- */
+const TABS=[["processada","Processadas"],["revisao","Revisão humana"],["quarentena","Quarentena"],["duplicada","Duplicadas"],["pendente","Notificações pendentes"]];
+let tab="processada";
+const sel=k=>itens.filter(i=>k==="pendente"?i.pendente:i.res===k);
+function confBar(c){return `<span class="bar ${c<.45?"lo":""}"><i style="width:${Math.round(c*100)}%"></i></span>${pct(c,0)}`;}
+function renderTabs(){
+  $("#tabs").innerHTML=TABS.map(([k,n])=>`<button class="tab" role="tab" aria-selected="${k===tab}" data-k="${k}">${n}<span class="c">${sel(k).length}</span></button>`).join("");
+  $("#tabs").querySelectorAll(".tab").forEach(b=>b.onclick=()=>{tab=b.dataset.k;renderTabs();renderTable();});
+}
+function renderTable(){
+  const f=$("#find").value.trim().toLowerCase();
+  let rows=sel(tab).filter(i=>!f||(i.texto+" "+i.id).toLowerCase().includes(f));
+  const H={processada:["ID","Relato","Categoria","Confiança","Prioridade","Protocolo"],revisao:["ID","Relato","Categoria sugerida","Confiança"],quarentena:["ID","Relato","Motivo"],duplicada:["ID","Relato","Duplicada de"],pendente:["ID","Relato","Categoria","Prioridade"]}[tab];
+  $("#thead").innerHTML="<tr>"+H.map(h=>`<th>${h}</th>`).join("")+"</tr>";
+  if(tab==="processada") rows=rows.slice().sort((a,b)=>({alta:0,media:1,baixa:2}[a.prio]-{alta:0,media:1,baixa:2}[b.prio]));
+  const td=(i)=>{const t=`<td class="id">${i.id}</td><td>${i.texto?esc(i.texto):"<i>(vazio)</i>"}</td>`;
+    if(tab==="processada")return t+`<td>${esc(CAT[i.cat])}</td><td>${confBar(i.conf)}</td><td class="${i.prio==="alta"?"pr-alta":""}">${i.prio}</td><td class="mono">${i.prot||"<i>pendente</i>"}</td>`;
+    if(tab==="revisao")return t+`<td>${esc(CAT[i.cat])}</td><td>${confBar(i.conf)}</td>`;
+    if(tab==="quarentena")return t+`<td>${esc(i.motivo)}</td>`;
+    if(tab==="duplicada")return t+`<td class="id">${i.dup}</td>`;
+    return t+`<td>${esc(CAT[i.cat])}</td><td class="${i.prio==="alta"?"pr-alta":""}">${i.prio}</td>`;};
+  $("#tbody").innerHTML=rows.length?rows.map(i=>"<tr>"+td(i)+"</tr>").join(""):`<tr><td colspan="${H.length}">Nenhum relato com esse filtro.</td></tr>`;
+}
+$("#find").oninput=renderTable;renderTabs();renderTable();
+
+/* ---------- medição ---------- */
+const av=D.av;
+$("#kpis").innerHTML=[
+ [pct(av.acuracia_total),"de acerto nos 100 relatos de teste"],
+ [av.n_automaticos+" de 100","decididos sem humano (confiança ≥ 0,45)"],
+ [pct(av.acuracia_automaticos,1),"de acerto entre esses "+av.n_automaticos],
+ [av.enviados_a_revisao+" de 100","enviados à revisão humana"]
+].map(k=>`<div class="kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join("");
+(function chart(){
+  const v=av.varredura_limiar, W=640,H=260,L=44,R=14,T=14,B=38, x=i=>L+(W-L-R)*i/(v.length-1), y=p=>T+(H-T-B)*(1-p);
+  let s="";
+  for(const g of [0,.25,.5,.75,1]){s+=`<line x1="${L}" x2="${W-R}" y1="${y(g)}" y2="${y(g)}" stroke="#D3DDE6"/><text x="${L-8}" y="${y(g)+4}" text-anchor="end" font-size="11" fill="#52667C">${g*100}%</text>`;}
+  v.forEach((p,i)=>{s+=`<text x="${x(i)}" y="${H-14}" text-anchor="middle" font-size="11" fill="#52667C">${p.limiar.toFixed(2).replace(".",",")}</text>`;});
+  s+=`<text x="${(L+W-R)/2}" y="${H-1}" text-anchor="middle" font-size="11" fill="#52667C">limiar de confiança</text>`;
+  const line=(f,c)=>v.map((p,i)=>(i?"L":"M")+x(i)+" "+y(f(p))).join(" ");
+  s+=`<path d="${line(p=>p.acuracia,0)}" fill="none" stroke="#039882" stroke-width="3"/>`;
+  s+=`<path d="${line(p=>p.automaticos/100,0)}" fill="none" stroke="#FB6702" stroke-width="3"/>`;
+  v.forEach((p,i)=>{s+=`<circle cx="${x(i)}" cy="${y(p.acuracia)}" r="4" fill="#039882"/><circle cx="${x(i)}" cy="${y(p.automaticos/100)}" r="4" fill="#FB6702"/>`;});
+  const u=v.findIndex(p=>Math.abs(p.limiar-.45)<1e-9);
+  if(u>=0)s+=`<line x1="${x(u)}" x2="${x(u)}" y1="${T}" y2="${H-B}" stroke="#012B58" stroke-dasharray="4 4"/><text x="${x(u)+6}" y="${T+12}" font-size="11" fill="#012B58">limiar usado (0,45)</text>`;
+  $("#svg").innerHTML=s;
+})();
+$("#errs").innerHTML=av.erros.map(e=>`<tr><td>${esc(e[0])}</td><td>${esc(CAT[e[1]])}</td><td>${esc(CAT[e[2]])}</td><td>${pct(e[3],0)}</td></tr>`).join("");
+const cf=Object.entries(av.confusoes), mx=Math.max(...cf.map(c=>c[1]));
+$("#cf").innerHTML="<p class=\"note\" style=\"margin:14px 0 2px\">Confusões (correto → previsto), contagem de erros:</p>"+cf.map(([k,n])=>{const [a,b]=k.split("->");return `<div><span>${esc(CAT[a])} → ${esc(CAT[b])}</span><span class="b" style="width:${n/mx*100}%"></span><b>${n}</b></div>`;}).join("");
+
+/* ---------- falhas ---------- */
+const F=D.falhas, fb=$("#falhasBox");
+const caixa=(t,txt,cmd,log,res)=>`<div class="fx"><div><h3>${t}</h3><p style="margin:0">${txt}</p>${cmd?`<code class="cmd">${esc(cmd)}</code>`:""}${res?`<div class="res">${res}</div>`:""}</div>${log?`<pre>${esc(log.join("\n"))}</pre>`:""}</div>`;
+fb.innerHTML=
+ caixa("Arquivo de entrada ausente","O robô registra o erro, grava o relatório com status próprio e termina sem exceção.","python main.py --entrada nao_existe.csv --saida saida/demo_entrada_ausente",F.ausente,`<span>status: <b class="ok">${esc(F.aus_rel.status)}</b></span>`)+
+ caixa("Dados inválidos","Quatro tipos plantados no CSV: texto vazio, coordenada não numérica, coordenada fora do intervalo e data inválida. Vão para a quarentena com o motivo, e as outras linhas seguem.","", F.quar,`<span>4 de 4 plantadas em <b class="ok">quarentena.csv</b></span>`)+
+ caixa("Serviço externo fora do ar","Cada item tenta 3 vezes, esperando 0,2 s e depois 0,4 s. Sem resposta, entra nas notificações pendentes e a execução termina normalmente.","python main.py --saida saida/demo_servico_fora --simular-servico-fora",F.fora.concat(["…"]),`<span><b class="ok">${F.fora_rel.notificacao_pendente}</b> pendentes</span><span><b class="ok">${F.fora_rel.retries_falhos}</b> tentativas falhas</span><span>0 exceções</span>`)+
+ caixa("Falha intermitente (30% de erro simulado)","É o que o palco mostra: "+D.rel1.retries_falhos+" tentativas falharam, o retry recuperou a maioria e só "+D.rel1.notificacao_pendente+" itens ficaram pendentes.","python main.py",null,`<span>${D.rel1.notificadas} de ${D.rel1.processadas} notificadas</span>`)+
+ caixa("Reexecução","Uma segunda execução sobre o mesmo arquivo não cria nenhum chamado repetido: os IDs já tratados ficam registrados em <code>estado_processados.json</code>.","python main.py",null,`<span>processadas: <b class="ok">${D.rel2.processadas}</b></span><span>ignoradas por idempotência: <b class="ok">${D.rel2.ja_processadas}</b></span>`)+
+ `<p class="note">Testes automatizados (<code>python -m unittest tests.test_rpa</code>): ${esc(D.testes.filter(Boolean).slice(-2).join(" · "))}.</p>`;
+
+/* ---------- copiar ---------- */
+document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{const t=b.previousElementSibling.innerText;try{await navigator.clipboard.writeText(t);b.textContent="Copiado";}catch(e){b.textContent="Selecione e copie";}setTimeout(()=>b.textContent="Copiar",1600);});
+
+/*__TRIAGEM__*/
+(function(){
+  const M=D.modelo; M.idx={}; M.vocab.forEach((x,i)=>M.idx[x]=i);
+  const out=$("#tOut"); let ultimo=null;
+  const NOMEPRIO={alta:"alta",media:"média",baixa:"baixa"};
+  function mostrar(res,nome){
+    ultimo={res,nome}; const c=k=>res.filter(r=>r.res===k).length;
+    const kp=[["Lidas",res.length],["Processadas",c("processada")],["Revisão humana",c("revisao")],["Quarentena",c("quarentena")],["Duplicadas",c("duplicada")]];
+    const linhas=res.map(r=>{
+      const det=r.res==="processada"?`${CAT[r.categoria]} · prioridade ${NOMEPRIO[r.prio]}`+(r.sinais?` · sinais: ${esc(r.sinais.replace(/;/g,", "))}`:"")
+        :r.res==="revisao"?`${CAT[r.categoria]} (palpite) · ${esc(r.motivo)}`:r.res==="duplicada"?`repete ${esc(r.duplicada_de)}`:esc(r.motivo);
+      return `<tr><td class="mono">${esc(r.id)}</td><td>${esc(r.texto)}</td><td><span class="tag ${r.res}">${RES[r.res]}</span></td><td>${det}</td><td>${r.confianca!=null?pct(r.confianca):"–"}</td></tr>`;}).join("");
+    out.innerHTML=`<p class="hint"><b>${esc(nome)}</b></p>
+      <div class="kpis">${kp.map(([a,b])=>`<div class="kpi"><div class="lab">${a}</div><div style="font:700 1.6rem var(--serif)">${b}</div></div>`).join("")}</div>
+      <h3 style="margin:6px 0 8px">Interpretação</h3><div id="tInterp">${Triagem.interpretar(res).map(p=>`<p>${esc(p)}</p>`).join("")}</div>
+      <div class="tw"><table><thead><tr><th>ID</th><th>Relato</th><th>Destino</th><th>Detalhe</th><th>Confiança</th></tr></thead><tbody>${linhas}</tbody></table></div>
+      <p style="margin-top:12px"><button class="b2" type="button" id="tDown">Baixar resultado (CSV)</button></p>`;
+    $("#tDown").onclick=()=>{
+      const q=s=>'"'+String(s==null?"":s).replace(/"/g,'""')+'"';
+      const csv=["id,destino,categoria,confianca,prioridade,detalhe,texto"].concat(res.map(r=>[r.id,r.res,r.categoria||"",r.confianca!=null?r.confianca.toFixed(3):"",r.prio||"",r.motivo||r.duplicada_de||r.sinais||"",r.texto].map(q).join(","))).join("\n");
+      baixar("resultado_triagem.csv",csv);};
+  }
+  function baixar(nome,txt){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\uFEFF"+txt],{type:"text/csv;charset=utf-8"}));a.download=nome;document.body.appendChild(a);a.click();a.remove();}
+  function rodar(txt,nome){
+    try{const linhas=Triagem.parseCSV(txt); if(!linhas.length) throw new Error("o arquivo não tem linhas de dados");
+      const h=Object.keys(linhas[0]); const falta=["id","texto","lat","lon","data"].filter(x=>!h.includes(x));
+      if(falta.length) throw new Error("faltam colunas: "+falta.join(", "));
+      if(linhas.length>5000) throw new Error("arquivo grande demais para a página (máximo 5000 linhas)");
+      mostrar(Triagem.triar(M,linhas),nome);
+    }catch(e){out.innerHTML=`<p id="tErr">Não foi possível ler o arquivo: ${esc(e.message)}</p>`;}
+  }
+  $("#tFile").addEventListener("change",e=>{const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>rodar(r.result,f.name); r.onerror=()=>{out.innerHTML='<p id="tErr">Não foi possível abrir o arquivo.</p>';}; r.readAsText(f,"utf-8");});
+  $("#tEx1").onclick=()=>rodar(D.exemplos[0].csv,D.exemplos[0].nome);
+  $("#tEx2").onclick=()=>rodar(D.exemplos[1].csv,D.exemplos[1].nome);
+})();
+</script>
+<script>document.getElementById("sair").addEventListener("click",function(){try{sessionStorage.removeItem("inovacity_sessao")}catch(e){}});</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"quando": "2026-11-16 19:50:12", "entrada": "/home/claude/entregas/rpa/dados/entrada_ocorrencias.csv", "status": "ok", "lidas": 51, "invalidas": 4, "ja_processadas": 0, "duplicadas": 3, "revisao_humana": 12, "processadas": 32, "notificadas": 0, "notificacao_pendente": 32, "retries_falhos": 96, "duracao_s": 19.33}

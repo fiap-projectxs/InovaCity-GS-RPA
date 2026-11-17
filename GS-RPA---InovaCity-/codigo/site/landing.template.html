@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InovaCity · Conte o que viu no seu bairro</title>
+<style>
+:root{--navy:#012B58;--navy2:#0B3D75;--teal:#039882;--tealink:#02705F;--orange:#FB6702;--orangeink:#B54300;
+ --bg:#EAF0EE;--paper:#FAFCFB;--street:#D9E3E0;--park:#C6E8DF;--line:#C5D3D0;--mute:#4D6275;
+ --slab:Rockwell,"Rockwell Nova","Roboto Slab",Georgia,"Times New Roman",serif;
+ --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--navy);font:16px/1.6 var(--sans)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+a{color:var(--navy2)}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+header.t{padding:16px 0}
+header.t .w{display:flex;align-items:center;gap:12px}
+header.t img{height:46px;width:46px;object-fit:contain}
+header.t b{font-family:var(--slab);font-size:1.25rem;letter-spacing:.01em}
+header.t a.in{margin-left:auto;font-weight:600;text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:1px}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px 56px;align-items:center;padding:28px 0 56px}
+h1{font-family:var(--slab);font-weight:700;font-size:clamp(1.9rem,3.3vw,2.7rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.015em}
+.lead{font-size:1.05rem;color:var(--mute);max-width:46ch;margin:0 0 20px}
+/* ficha de cadastro */
+.ficha{background:var(--paper);border:2px solid var(--navy);border-radius:4px;box-shadow:6px 6px 0 var(--navy);max-width:440px}
+.ficha .topo{display:flex;gap:0;border-bottom:2px solid var(--navy)}
+.ficha .topo button{flex:1;font:inherit;font-weight:700;padding:10px 12px;border:0;background:var(--paper);color:var(--navy);cursor:pointer;border-right:2px solid var(--navy)}
+.ficha .topo button:last-child{border-right:0}
+.ficha .topo button[aria-selected=true]{background:var(--navy);color:#fff}
+.ficha form,.ficha .ok{padding:20px}
+label{display:block;font-weight:600;margin:0 0 4px}
+.campo{margin-bottom:16px}
+.campo input{width:100%;font:inherit;padding:10px 12px;border:2px solid var(--navy);border-radius:3px;background:#fff;color:var(--navy)}
+.campo input:focus{outline:3px solid var(--orange);outline-offset:0}
+.pw{position:relative}
+.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;font:inherit;font-size:.85rem;color:var(--navy2);cursor:pointer;padding:6px 8px;text-decoration:underline}
+.dica{font-size:.85rem;color:var(--mute);margin:4px 0 0;min-height:1.3em}
+.go{width:100%;font:inherit;font-weight:700;font-size:1.05rem;padding:12px;border:2px solid var(--navy);border-radius:3px;background:var(--orange);color:#1b0b00;cursor:pointer;transition:transform .12s}
+.go:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--navy)}
+.go:active{transform:none;box-shadow:none}
+.go[disabled]{opacity:.6;cursor:wait}
+.err{color:var(--orangeink);font-weight:600;min-height:1.4em;margin:0 0 10px;font-size:.95rem}
+.nota{font-size:.82rem;color:var(--mute);margin:14px 0 0}
+.ok h2{font-family:var(--slab);font-size:1.6rem;margin:0 0 8px}
+.ok .sair{font:inherit;background:none;border:0;color:var(--navy2);text-decoration:underline;cursor:pointer;padding:0}
+.selo{display:inline-block;border:2px solid var(--teal);color:var(--tealink);font-weight:700;padding:2px 10px;border-radius:3px;transform:rotate(-3deg);margin-bottom:10px;animation:carimbo .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes carimbo{from{transform:rotate(-12deg) scale(2);opacity:0}to{transform:rotate(-3deg) scale(1);opacity:1}}
+/* mapa */
+.mapa{background:var(--paper);border:2px solid var(--navy);border-radius:4px;padding:8px}
+.mapa svg{display:block;width:100%;height:auto}
+.rua{fill:none;stroke:var(--street);stroke-width:26;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:desenha 1.6s ease-out forwards}
+.eixo{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:7 9;opacity:.9}
+.bloco{fill:#fff;stroke:var(--line);stroke-width:1.5}
+.nome{font:600 11px var(--sans);fill:var(--mute);letter-spacing:.04em}
+@keyframes desenha{to{stroke-dashoffset:0}}
+.pin{opacity:0}
+.pin .o,.pin .d{opacity:0;transform-box:fill-box;transform-origin:50% 100%}
+.pin .o{animation:c-o 16s linear infinite}
+.pin .d{animation:c-d 16s linear infinite}
+.pin .ring{fill:none;stroke:var(--orange);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 1.8s ease-out infinite}
+@keyframes c-o{0%{opacity:0;transform:translateY(-18px)}3%{opacity:1;transform:none}20%{opacity:1}21%,100%{opacity:0}}
+@keyframes c-d{0%,20%{opacity:0}21%{opacity:1}95%{opacity:1}98%,100%{opacity:0}}
+@keyframes ring{from{transform:scale(.6);opacity:.8}to{transform:scale(2.4);opacity:0}}
+.pin{opacity:1}
+.bub{fill:#fff;stroke:var(--navy);stroke-width:1.5}
+.b1{font:700 12px var(--sans);fill:var(--navy)}.b2{font:12px var(--sans)}
+.b2.so{fill:var(--orangeink)}.b2.sd{fill:var(--tealink)}
+.robo text{font:700 10px var(--sans);fill:#fff}
+.legenda{display:flex;gap:18px;flex-wrap:wrap;padding:8px 6px 2px;font-size:.88rem;color:var(--mute)}
+.legenda i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* como funciona */
+section.s{padding:56px 0}
+h2.t{font-family:var(--slab);font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 8px}
+.passos{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:36px}
+.passos svg.linha{position:absolute;left:0;top:22px;width:100%;height:6px;overflow:visible;pointer-events:none}
+.linha path{stroke:var(--navy);stroke-width:3;fill:none;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s ease-out}
+.passos.v .linha path{stroke-dashoffset:0}
+.passo{position:relative}
+.passo .n{width:46px;height:46px;border-radius:50%;background:var(--paper);border:3px solid var(--navy);display:grid;place-items:center;font:700 1.15rem var(--slab);position:relative;z-index:1;transition:background .3s,color .3s,border-color .3s}
+.passos.v .passo .n{background:var(--navy);color:#fff}
+.passos.v .passo:nth-of-type(1) .n{transition-delay:.2s}.passos.v .passo:nth-of-type(2) .n{transition-delay:.7s}.passos.v .passo:nth-of-type(3) .n{transition-delay:1.2s}.passos.v .passo:nth-of-type(4) .n{transition-delay:1.7s;background:var(--orange);border-color:var(--navy);color:#1b0b00}
+.passo h3{font-family:var(--slab);font-size:1.15rem;margin:14px 0 4px}
+.passo p{margin:0;color:var(--mute);font-size:.97rem}
+.sim{font-size:.82rem;color:var(--mute);margin-top:22px}
+/* categorias */
+.cats{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.cat{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border:2px solid var(--navy);border-radius:999px;background:var(--paper);font-weight:600;transition:transform .15s,background .15s}
+.cat:hover{transform:translateY(-3px) rotate(-1deg);background:#fff}
+.cat svg{width:26px;height:26px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+footer{border-top:2px solid var(--navy);margin-top:40px;padding:24px 0 34px;color:var(--mute);font-size:.92rem}
+footer b{font-family:var(--slab);color:var(--navy);display:block;font-size:1.05rem}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.passos{grid-template-columns:1fr 1fr}.passos svg.linha{display:none}}
+@media(max-width:520px){.passos{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rua{stroke-dashoffset:0}.pin .o{opacity:1}.robo{display:none}.passos .linha path{stroke-dashoffset:0}.passos .n{background:var(--navy);color:#fff}}
+</style>
+</head>
+<body>
+<header class="t"><div class="w"><img src="data:image/png;base64,__LOGO__" alt=""><b>InovaCity</b><a class="in" href="#cadastro" id="linkEntrar">Entrar</a></div></header>
+<main>
+<div class="w">
+<section class="hero">
+  <div>
+    <h1>Viu um problema na rua? Conte. A gente organiza e encaminha.</h1>
+    <p class="lead">A InovaCity junta os relatos dos moradores, separa o que é mais urgente e deixa pronto para quem cuida do bairro.</p>
+    <div class="ficha" id="cadastro">
+      <div class="topo" role="tablist" aria-label="Cadastro ou entrada">
+        <button type="button" role="tab" id="tabCad" aria-selected="true">Cadastrar</button>
+        <button type="button" role="tab" id="tabEnt" aria-selected="false">Já tenho cadastro</button>
+      </div>
+      <form id="f" novalidate>
+        <div class="campo"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="username" maxlength="60" required></div>
+        <div class="campo"><label for="senha">Senha</label>
+          <div class="pw"><input id="senha" name="senha" type="password" autocomplete="new-password" minlength="8" required><button type="button" id="ver" aria-pressed="false">mostrar</button></div>
+          <p class="dica" id="dica">Mínimo de 8 caracteres.</p></div>
+        <p class="err" id="err" role="alert"></p>
+        <button class="go" id="go" type="submit">Cadastrar</button>
+        <p class="nota">Neste protótipo o cadastro fica salvo só neste navegador, com a senha embaralhada (PBKDF2). Não há servidor.</p>
+      </form>
+      <div class="ok" id="ok" hidden></div>
+    </div>
+  </div>
+  <div>
+    <div class="mapa">
+      <svg viewBox="0 0 640 560" role="img" aria-label="Mapa de um bairro: relatos aparecem em laranja e passam a verde quando o robô os encaminha">
+        <rect width="640" height="560" fill="#FAFCFB"/>
+        <!-- quarteirões -->
+        <rect class="bloco" x="40" y="150" width="76" height="106" rx="4"/><rect class="bloco" x="40" y="304" width="76" height="120" rx="4"/>
+        <rect class="bloco" x="164" y="304" width="142" height="120" rx="4"/><rect class="bloco" x="354" y="150" width="140" height="106" rx="4"/>
+        <rect class="bloco" x="354" y="304" width="140" height="120" rx="4"/><rect class="bloco" x="544" y="150" width="70" height="106" rx="4"/>
+        <rect class="bloco" x="544" y="304" width="70" height="120" rx="4"/><rect class="bloco" x="164" y="470" width="142" height="60" rx="4"/><rect class="bloco" x="354" y="470" width="140" height="60" rx="4"/>
+        <rect x="164" y="150" width="142" height="106" rx="10" fill="var(--park)" stroke="#9fd3c6" stroke-width="1.5"/>
+        <g fill="#7cc4b2"><circle cx="196" cy="182" r="11"/><circle cx="238" cy="210" r="14"/><circle cx="276" cy="176" r="10"/><circle cx="214" cy="232" r="9"/></g>
+        <text class="nome" x="214" y="248">PRAÇA</text>
+        <!-- ruas -->
+        <g>
+          <path class="rua" pathLength="1" d="M0 120H640" style="animation-delay:.0s"/><path class="rua" pathLength="1" d="M0 280H640" style="animation-delay:.2s"/><path class="rua" pathLength="1" d="M0 450H640" style="animation-delay:.4s"/>
+          <path class="rua" pathLength="1" d="M140 0V560" style="animation-delay:.3s"/><path class="rua" pathLength="1" d="M330 0V560" style="animation-delay:.5s"/><path class="rua" pathLength="1" d="M520 0V560" style="animation-delay:.7s"/>
+        </g>
+        <g class="eixo"><path d="M0 120H640M0 280H640M0 450H640M140 0V560M330 0V560M520 0V560"/></g>
+        <text class="nome" x="350" y="112">AV. CENTRAL</text><text class="nome" x="12" y="272">RUA DAS ACÁCIAS</text><text class="nome" x="352" y="442">RUA DO COMÉRCIO</text>
+        <!-- rota do robô -->
+        <path d="M140 450V120H520V450H140Z" fill="none" stroke="var(--navy)" stroke-width="2" stroke-dasharray="2 8" opacity=".55" stroke-linecap="round"/>
+        <!-- pins -->
+        <g class="pin" transform="translate(140 280)"><g class="o" style="animation-delay:-1.44s"><circle class="ring" cx="0" cy="-2" r="8" style="animation-delay:-1.44s"/><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--orange)" stroke="var(--navy)" stroke-width="2"/><circle cy="-28" r="5" fill="#fff"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Lâmpada apagada</text><text class="b2 so" x="30" y="-30">Relato recebido</text></g>
+          <g class="d" style="animation-delay:-1.44s"><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--teal)" stroke="var(--navy)" stroke-width="2"/><path d="M-6-28l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Lâmpada apagada</text><text class="b2 sd" x="30" y="-30">Encaminhado</text></g></g>
+        <g class="pin" transform="translate(330 120)"><g class="o" style="animation-delay:1.0s"><circle class="ring" cx="0" cy="-2" r="8" style="animation-delay:1.0s"/><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--orange)" stroke="var(--navy)" stroke-width="2"/><circle cy="-28" r="5" fill="#fff"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Buraco na via</text><text class="b2 so" x="30" y="-30">Relato recebido</text></g>
+          <g class="d" style="animation-delay:1.0s"><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--teal)" stroke="var(--navy)" stroke-width="2"/><path d="M-6-28l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Buraco na via</text><text class="b2 sd" x="30" y="-30">Encaminhado</text></g></g>
+        <g class="pin" transform="translate(520 120)"><g class="o" style="animation-delay:4.0s"><circle class="ring" cx="0" cy="-2" r="8" style="animation-delay:4.0s"/><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--orange)" stroke="var(--navy)" stroke-width="2"/><circle cy="-28" r="5" fill="#fff"/>
+          <rect class="bub" x="-170" y="-62" width="150" height="38" rx="5"/><text class="b1" x="-160" y="-46">Calçada sem rampa</text><text class="b2 so" x="-160" y="-30">Relato recebido</text></g>
+          <g class="d" style="animation-delay:4.0s"><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--teal)" stroke="var(--navy)" stroke-width="2"/><path d="M-6-28l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="bub" x="-170" y="-62" width="150" height="38" rx="5"/><text class="b1" x="-160" y="-46">Calçada sem rampa</text><text class="b2 sd" x="-160" y="-30">Encaminhado</text></g></g>
+        <g class="pin" transform="translate(520 280)"><g class="o" style="animation-delay:6.56s"><circle class="ring" cx="0" cy="-2" r="8" style="animation-delay:6.56s"/><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--orange)" stroke="var(--navy)" stroke-width="2"/><circle cy="-28" r="5" fill="#fff"/>
+          <rect class="bub" x="-170" y="-62" width="150" height="38" rx="5"/><text class="b1" x="-160" y="-46">Rua alagando</text><text class="b2 so" x="-160" y="-30">Relato recebido</text></g>
+          <g class="d" style="animation-delay:6.56s"><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--teal)" stroke="var(--navy)" stroke-width="2"/><path d="M-6-28l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="bub" x="-170" y="-62" width="150" height="38" rx="5"/><text class="b1" x="-160" y="-46">Rua alagando</text><text class="b2 sd" x="-160" y="-30">Encaminhado</text></g></g>
+        <g class="pin" transform="translate(330 450)"><g class="o" style="animation-delay:10.56s"><circle class="ring" cx="0" cy="-2" r="8" style="animation-delay:10.56s"/><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--orange)" stroke="var(--navy)" stroke-width="2"/><circle cy="-28" r="5" fill="#fff"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Lixo acumulado</text><text class="b2 so" x="30" y="-30">Relato recebido</text></g>
+          <g class="d" style="animation-delay:10.56s"><path d="M0 0C-8-10-14-17-14-28A14 14 0 0 1 14-28C14-17 8-10 0 0Z" fill="var(--teal)" stroke="var(--navy)" stroke-width="2"/><path d="M-6-28l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="bub" x="20" y="-62" width="150" height="38" rx="5"/><text class="b1" x="30" y="-46">Lixo acumulado</text><text class="b2 sd" x="30" y="-30">Encaminhado</text></g></g>
+        <!-- robô -->
+        <g class="robo" id="robo"><circle r="15" fill="var(--navy)" stroke="#fff" stroke-width="2.5"/><text text-anchor="middle" y="3.5">robô</text>
+          <animateMotion dur="16s" repeatCount="indefinite" path="M140 450V120H520V450H140Z" rotate="0"/></g>
+      </svg>
+      <div class="legenda"><span><i style="background:var(--orange)"></i>relato recebido</span><span><i style="background:var(--teal)"></i>encaminhado pelo robô</span><span><i style="background:var(--navy)"></i>robô de triagem</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" aria-labelledby="hc">
+  <h2 class="t" id="hc">Como funciona</h2>
+  <p style="max-width:56ch;color:var(--mute);margin:0">Da sua mensagem até a equipe, cada passo tem um destino definido.</p>
+  <div class="passos" id="passos">
+    <svg class="linha" viewBox="0 0 1000 6" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M60 3H940"/></svg>
+    <div class="passo"><div class="n">1</div><h3>Você conta</h3><p>Escreva o que viu e onde. Texto simples basta.</p></div>
+    <div class="passo"><div class="n">2</div><h3>O robô organiza</h3><p>Identifica o tipo de problema, junta relatos repetidos e marca o que é mais urgente.</p></div>
+    <div class="passo"><div class="n">3</div><h3>Uma pessoa confere</h3><p>Quando o robô não tem certeza, o relato vai para uma pessoa decidir.</p></div>
+    <div class="passo"><div class="n">4</div><h3>A equipe é avisada</h3><p>O chamado segue com protocolo e prioridade.</p></div>
+  </div>
+  <p class="sim">No protótipo, o envio à equipe é simulado e os relatos são de exemplo.</p>
+</section>
+
+<section class="s" aria-labelledby="hk" style="padding-top:8px">
+  <h2 class="t" id="hk">O que dá para relatar</h2>
+  <div class="cats">
+    <div class="cat"><svg viewBox="0 0 24 24"><path d="M3 17h18M5 17c1-3 3-4 7-4s6 1 7 4M8 10l2 2M15 9l-2 3"/></svg>Buraco na via</div>
+    <div class="cat"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>Iluminação</div>
+    <div class="cat"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8zM9 8V5h6v3M10 12v5M14 12v5"/></svg>Lixo e entulho</div>
+    <div class="cat"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>Alagamento e drenagem</div>
+    <div class="cat"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 8v6l-3 6M12 14l3 6M8 10h8"/></svg>Calçada e acessibilidade</div>
+  </div>
+</section>
+</div>
+</main>
+<footer><div class="w"><b>Conectando pessoas. Transformando cidades.</b>InovaCity · FIAP · Global Solution 2026.2 – CitizenTech</div></footer>
+<script>
+(function(){
+const $=s=>document.querySelector(s), KEY="inovacity_usuarios_demo", enc=new TextEncoder();
+const reduz=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(reduz){const r=$("#robo"); if(r) r.remove();}
+// linha dos passos desenha ao entrar na tela
+const ps=$("#passos"); if("IntersectionObserver" in window&&!reduz){new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){ps.classList.add("v");o.disconnect();}},{threshold:.35}).observe(ps);} else ps.classList.add("v");
+// ---- cadastro / entrada (demonstração local) ----
+const b64=u=>btoa(String.fromCharCode(...u)), un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function hash(pw,salt){const k=await crypto.subtle.importKey("raw",enc.encode(pw),"PBKDF2",false,["deriveBits"]);
+  return b64(new Uint8Array(await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:150000},k,256)));}
+const lerU=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){return {};}};
+const gravarU=u=>{try{localStorage.setItem(KEY,JSON.stringify(u));return true;}catch(e){return false;}};
+const chave=n=>n.trim().toLocaleLowerCase("pt-BR").replace(/\s+/g," ");
+let modo="cad";
+const f=$("#f"),err=$("#err"),go=$("#go"),dica=$("#dica"),senha=$("#senha"),nome=$("#nome");
+function setModo(m){modo=m;$("#tabCad").setAttribute("aria-selected",m==="cad");$("#tabEnt").setAttribute("aria-selected",m==="ent");
+  go.textContent=m==="cad"?"Cadastrar":"Entrar";senha.autocomplete=m==="cad"?"new-password":"current-password";dica.textContent=m==="cad"?"Mínimo de 8 caracteres.":"";err.textContent="";}
+$("#tabCad").onclick=()=>setModo("cad");$("#tabEnt").onclick=()=>setModo("ent");
+$("#linkEntrar").onclick=()=>{setModo("ent");setTimeout(()=>nome.focus(),50);};
+$("#ver").onclick=e=>{const m=senha.type==="password";senha.type=m?"text":"password";e.target.textContent=m?"ocultar":"mostrar";e.target.setAttribute("aria-pressed",m);};
+senha.addEventListener("input",()=>{if(modo!=="cad")return;const n=senha.value.length;dica.textContent=n<8?`Faltam ${8-n} caractere${8-n>1?"s":""}.`:"Senha com tamanho suficiente.";});
+function boasVindas(n,novo){f.hidden=true;$(".topo").hidden=true;const o=$("#ok");o.hidden=false;o.textContent="";
+  const s=document.createElement("span");s.className="selo";s.textContent=novo?"Cadastro feito":"Você está dentro";const h=document.createElement("h2");h.textContent="Olá, "+n+".";
+  const p=document.createElement("p");p.textContent=novo?"Seu cadastro foi salvo neste navegador. No próximo passo do projeto, aqui entraria o formulário para relatar um problema.":"Que bom ter você de volta. Aqui entraria o formulário para relatar um problema.";
+  const b=document.createElement("button");b.className="sair";b.type="button";b.textContent="Sair";b.onclick=()=>{sessionStorage.removeItem("inovacity_sessao");o.hidden=true;f.hidden=false;$(".topo").hidden=false;f.reset();setModo("cad");};
+  o.append(s,h,p,b);sessionStorage.setItem("inovacity_sessao",n);}
+f.addEventListener("submit",async e=>{e.preventDefault();err.textContent="";
+  const n=nome.value.trim(),pw=senha.value;
+  if(n.length<2){err.textContent="Digite seu nome (pelo menos 2 letras).";nome.focus();return;}
+  if(modo==="cad"&&pw.length<8){err.textContent="A senha precisa ter pelo menos 8 caracteres.";senha.focus();return;}
+  if(modo==="ent"&&!pw){err.textContent="Digite sua senha.";senha.focus();return;}
+  if(!(window.crypto&&crypto.subtle)){err.textContent="Este navegador não permite proteger a senha nesta página. Abra por http://localhost ou https.";return;}
+  go.disabled=true;
+  try{const U=lerU(),k=chave(n);
+    if(modo==="cad"){
+      if(U[k]){err.textContent="Já existe um cadastro com esse nome neste navegador. Use “Já tenho cadastro”.";return;}
+      const salt=crypto.getRandomValues(new Uint8Array(16));U[k]={nome:n,salt:b64(salt),h:await hash(pw,salt),em:new Date().toISOString()};
+      if(!gravarU(U)){err.textContent="Não foi possível salvar neste navegador (armazenamento bloqueado).";return;}
+      sessionStorage.setItem("inovacity_sessao",n);location.href="index.html";
+    }else{
+      const u=U[k]; if(!u){err.textContent="Nome ou senha incorretos.";return;}
+      if(await hash(pw,un64(u.salt))!==u.h){err.textContent="Nome ou senha incorretos.";return;}
+      sessionStorage.setItem("inovacity_sessao",u.nome);location.href="index.html";}
+  }catch(x){err.textContent="Algo deu errado. Tente de novo.";}
+  finally{go.disabled=false;}});
+const sess=sessionStorage.getItem("inovacity_sessao"); if(sess) location.replace("index.html");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+id,motivo,texto,lat,lon,data
+OC3204,data invalida (esperado AAAA-MM-DD),lixo na rua,-23.56,-46.65,31/02/2026
+OC3201,texto vazio ou curto,,-23.56,-46.65,2026-11-10
+OC3202,coordenada nao numerica,buraco na rua,abc,-46.65,2026-11-10
+OC3203,coordenada fora do intervalo,poste apagado,99,-46.65,2026-11-10

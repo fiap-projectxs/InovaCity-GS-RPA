@@ -1,0 +1,14 @@
+{
+  "entrada": "/home/claude/entregas/rpa/dados/entrada_ocorrencias.csv",
+  "status": "ok",
+  "lidas": 51,
+  "invalidas": 4,
+  "ja_processadas": 47,
+  "duplicadas": 0,
+  "revisao_humana": 0,
+  "processadas": 0,
+  "notificadas": 0,
+  "notificacao_pendente": 0,
+  "retries_falhos": 0,
+  "duracao_s": 0.02
+}

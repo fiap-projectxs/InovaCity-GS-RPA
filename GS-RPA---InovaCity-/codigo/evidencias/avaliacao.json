@@ -1,0 +1,173 @@
+{
+  "n_treino": 200,
+  "n_teste": 100,
+  "acuracia_total": 0.8,
+  "enviados_a_revisao": 51,
+  "n_automaticos": 49,
+  "acuracia_automaticos": 0.898,
+  "confusoes": {
+    "calcada_acessibilidade->buraco_via": 4,
+    "alagamento_drenagem->buraco_via": 3,
+    "lixo_entulho->buraco_via": 3,
+    "alagamento_drenagem->iluminacao": 3,
+    "iluminacao->alagamento_drenagem": 2,
+    "iluminacao->calcada_acessibilidade": 2,
+    "buraco_via->iluminacao": 1,
+    "buraco_via->lixo_entulho": 1,
+    "alagamento_drenagem->calcada_acessibilidade": 1
+  },
+  "varredura_limiar": [
+    {
+      "limiar": 0.3,
+      "automaticos": 85,
+      "acuracia": 0.871
+    },
+    {
+      "limiar": 0.35,
+      "automaticos": 77,
+      "acuracia": 0.909
+    },
+    {
+      "limiar": 0.4,
+      "automaticos": 65,
+      "acuracia": 0.923
+    },
+    {
+      "limiar": 0.45,
+      "automaticos": 49,
+      "acuracia": 0.898
+    },
+    {
+      "limiar": 0.5,
+      "automaticos": 45,
+      "acuracia": 0.889
+    },
+    {
+      "limiar": 0.6,
+      "automaticos": 34,
+      "acuracia": 0.912
+    }
+  ],
+  "erros": [
+    [
+      "agua sobe na rua com qualquer chuva em Praca do Bairro",
+      "alagamento_drenagem",
+      "buraco_via",
+      0.34
+    ],
+    [
+      "pavimento cedeu e abriu um rombo em Travessa Azul",
+      "buraco_via",
+      "iluminacao",
+      0.297
+    ],
+    [
+      "enxurrada invade as casas da baixada risco de acidente em Rua das Acacias",
+      "alagamento_drenagem",
+      "buraco_via",
+      0.319
+    ],
+    [
+      "trecho escuro, medo de passar a noite risco de acidente em Rua da Escola",
+      "iluminacao",
+      "alagamento_drenagem",
+      0.249
+    ],
+    [
+      "pavimento cedeu e abriu um rombo ja houve queda aqui em Rua do Comrcio",
+      "buraco_via",
+      "lixo_entulho",
+      0.254
+    ],
+    [
+      "colchao e sofa abandonados na via risco de acidene em Rua da Escola",
+      "lixo_entulho",
+      "buraco_via",
+      0.534
+    ],
+    [
+      "enxurrada invade as casas da baixada risco de acidente em Praca do Bairro",
+      "alagamento_drenagem",
+      "buraco_via",
+      0.372
+    ],
+    [
+      "colchao e sofa abandonados na via em Rua das Acacias",
+      "lixo_entulho",
+      "buraco_via",
+      0.549
+    ],
+    [
+      "piso para deficientes visuais arrancado ja houve queda aqui em Rua do Comercio",
+      "calcada_acessibilidade",
+      "buraco_via",
+      0.242
+    ],
+    [
+      "passeio com buracos para quem usa muleta em Praca do Bairro",
+      "calcada_acessibilidade",
+      "buraco_via",
+      0.615
+    ],
+    [
+      "bueiro sem tampa e entuido em Praca do Bairro",
+      "alagamento_drenagem",
+      "iluminacao",
+      0.324
+    ],
+    [
+      "passeio com buracos para quem usa muleta em Praca do Bairro",
+      "calcada_acessibilidade",
+      "buraco_via",
+      0.615
+    ],
+    [
+      "luminaria da rua nao acende em Rua do Comercio",
+      "iluminacao",
+      "alagamento_drenagem",
+      0.308
+    ],
+    [
+      "PASSEIO COM BURACOS PARA QUEM USA MULETA CRIANCA QUASE SE MACHUCOU EM TRAVESSA AZUL",
+      "calcada_acessibilidade",
+      "buraco_via",
+      0.255
+    ],
+    [
+      "enxurrada invade as casas da baixada crianca quase se machucou em Travessa Azul",
+      "alagamento_drenagem",
+      "iluminacao",
+      0.295
+    ],
+    [
+      "luminaria da rua nao acende crianca quase se machucou em Av. Central",
+      "iluminacao",
+      "calcada_acessibilidade",
+      0.251
+    ],
+    [
+      "colchao e sofa abandonados na via em Praca do Bairro",
+      "lixo_entulho",
+      "buraco_via",
+      0.609
+    ],
+    [
+      "enxurrada invade as casas da baixada urgente em Travessa Azul",
+      "alagamento_drenagem",
+      "iluminacao",
+      0.293
+    ],
+    [
+      "luminaria da rua nao acende crianca quase se machucou em Av. Central",
+      "iluminacao",
+      "calcada_acessibilidade",
+      0.251
+    ],
+    [
+      "enxurrada invade as casas da baixada em Av. Central",
+      "alagamento_drenagem",
+      "calcada_acessibilidade",
+      0.351
+    ]
+  ]
+}
