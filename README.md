@@ -1,6 +1,6 @@
 # InovaCity · Robô de triagem de ocorrências urbanas
 
-Global Solution 2026.2 – CitizenTech. Grupo **InovaCity**: *Conectando pessoas. Transformando cidades.*
+Global Solution 2026.2 – CitizenTech. Grupo **InovaCity**: 
 
 
 > Conectando pessoas. Transformando cidades.
