@@ -1,0 +1,122 @@
+2026-11-16 19:49:45,627 INFO OC2027 processada: iluminacao | prioridade baixa | confianca 0.86 | PROT-OC2027
+2026-11-16 19:49:45,628 WARNING OC3204 em quarentena: data invalida (esperado AAAA-MM-DD)
+2026-11-16 19:49:45,628 WARNING OC2012 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:45,829 INFO OC2012 processada: iluminacao | prioridade baixa | confianca 0.83 | PROT-OC2012
+2026-11-16 19:49:45,830 INFO OC2018 -> revisao humana (conf 0.44)
+2026-11-16 19:49:45,831 WARNING OC2004 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:46,031 INFO OC2004 processada: alagamento_drenagem | prioridade alta | confianca 0.94 | PROT-OC2004
+2026-11-16 19:49:46,033 INFO OC3104 -> revisao humana (conf 0.24)
+2026-11-16 19:49:46,035 INFO OC2020 processada: calcada_acessibilidade | prioridade media | confianca 0.92 | PROT-OC2020
+2026-11-16 19:49:46,035 WARNING OC3201 em quarentena: texto vazio ou curto
+2026-11-16 19:49:46,037 WARNING OC2011 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:46,237 INFO OC2011 processada: buraco_via | prioridade media | confianca 0.83 | PROT-OC2011
+2026-11-16 19:49:46,239 WARNING OC2007 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:46,440 INFO OC2007 processada: iluminacao | prioridade alta | confianca 0.91 | PROT-OC2007
+2026-11-16 19:49:46,442 WARNING OC2025 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:46,643 WARNING OC2025 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:47,043 INFO OC2025 processada: calcada_acessibilidade | prioridade media | confianca 0.94 | PROT-OC2025
+2026-11-16 19:49:47,045 INFO OC2030 -> revisao humana (conf 0.42)
+2026-11-16 19:49:47,047 INFO OC2032 processada: iluminacao | prioridade alta | confianca 0.92 | PROT-OC2032
+2026-11-16 19:49:47,049 INFO OC2037 -> revisao humana (conf 0.42)
+2026-11-16 19:49:47,050 WARNING OC2014 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:47,251 WARNING OC2014 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:47,651 INFO OC2014 processada: alagamento_drenagem | prioridade media | confianca 0.96 | PROT-OC2014
+2026-11-16 19:49:47,653 INFO OC2023 processada: lixo_entulho | prioridade baixa | confianca 0.63 | PROT-OC2023
+2026-11-16 19:49:47,653 INFO OC2010 processada: calcada_acessibilidade | prioridade baixa | confianca 0.95 | PROT-OC2010
+2026-11-16 19:49:47,654 INFO OC2002 processada: iluminacao | prioridade media | confianca 0.95 | PROT-OC2002
+2026-11-16 19:49:47,655 INFO OC2019 processada: alagamento_drenagem | prioridade media | confianca 0.95 | PROT-OC2019
+2026-11-16 19:49:47,656 WARNING OC2006 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:47,856 INFO OC2006 processada: buraco_via | prioridade media | confianca 0.58 | PROT-OC2006
+2026-11-16 19:49:47,858 WARNING OC2003 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:48,059 WARNING OC2003 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:48,459 WARNING OC2003 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:48,459 ERROR OC2003 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:48,461 INFO OC2022 processada: iluminacao | prioridade alta | confianca 0.63 | PROT-OC2022
+2026-11-16 19:49:48,461 INFO OC2040 -> revisao humana (conf 0.30)
+2026-11-16 19:49:48,461 WARNING OC3202 em quarentena: coordenada nao numerica
+2026-11-16 19:49:48,462 INFO OC3011 duplicada de OC2011
+2026-11-16 19:49:48,463 INFO OC2029 -> revisao humana (conf 0.43)
+2026-11-16 19:49:48,463 INFO OC2033 processada: lixo_entulho | prioridade baixa | confianca 0.58 | PROT-OC2033
+2026-11-16 19:49:48,464 WARNING OC2008 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:48,664 INFO OC2008 processada: lixo_entulho | prioridade baixa | confianca 0.86 | PROT-OC2008
+2026-11-16 19:49:48,666 INFO OC3006 duplicada de OC2006
+2026-11-16 19:49:48,667 INFO OC2028 processada: lixo_entulho | prioridade baixa | confianca 0.88 | PROT-OC2028
+2026-11-16 19:49:48,668 INFO OC2021 processada: buraco_via | prioridade baixa | confianca 0.96 | PROT-OC2021
+2026-11-16 19:49:48,669 INFO OC2026 processada: buraco_via | prioridade media | confianca 0.91 | PROT-OC2026
+2026-11-16 19:49:48,670 WARNING OC2034 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:48,870 WARNING OC2034 tentativa 2/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:49,271 WARNING OC2034 tentativa 3/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:49,271 ERROR OC2034 notificacao pendente: servico de notificacao indisponivel
+2026-11-16 19:49:49,272 INFO OC3101 -> revisao humana (conf 0.42)
+2026-11-16 19:49:49,273 INFO OC2013 processada: lixo_entulho | prioridade baixa | confianca 0.63 | PROT-OC2013
+2026-11-16 19:49:49,274 INFO OC2015 -> revisao humana (conf 0.44)
+2026-11-16 19:49:49,274 INFO OC2036 processada: buraco_via | prioridade media | confianca 0.75 | PROT-OC2036
+2026-11-16 19:49:49,275 INFO OC2017 processada: iluminacao | prioridade media | confianca 0.89 | PROT-OC2017
+2026-11-16 19:49:49,275 INFO OC3102 -> revisao humana (conf 0.21)
+2026-11-16 19:49:49,276 INFO OC2001 processada: buraco_via | prioridade alta | confianca 0.95 | PROT-OC2001
+2026-11-16 19:49:49,277 INFO OC3103 -> revisao humana (conf 0.24)
+2026-11-16 19:49:49,277 INFO OC2005 -> revisao humana (conf 0.44)
+2026-11-16 19:49:49,277 WARNING OC3203 em quarentena: coordenada fora do intervalo
+2026-11-16 19:49:49,278 INFO OC3001 duplicada de OC2001
+2026-11-16 19:49:49,278 INFO OC2031 processada: buraco_via | prioridade baixa | confianca 0.95 | PROT-OC2031
+2026-11-16 19:49:49,279 WARNING OC2039 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:49,479 INFO OC2039 processada: alagamento_drenagem | prioridade alta | confianca 0.95 | PROT-OC2039
+2026-11-16 19:49:49,481 INFO OC2024 processada: alagamento_drenagem | prioridade media | confianca 0.97 | PROT-OC2024
+2026-11-16 19:49:49,482 INFO OC2009 -> revisao humana (conf 0.38)
+2026-11-16 19:49:49,482 WARNING OC2035 tentativa 1/3 falhou: servico de notificacao indisponivel
+2026-11-16 19:49:49,683 INFO OC2035 processada: calcada_acessibilidade | prioridade baixa | confianca 0.95 | PROT-OC2035
+2026-11-16 19:49:49,685 INFO OC2038 processada: lixo_entulho | prioridade baixa | confianca 0.82 | PROT-OC2038
+2026-11-16 19:49:49,687 INFO OC2016 processada: buraco_via | prioridade alta | confianca 0.91 | PROT-OC2016
+2026-11-16 19:49:49,688 INFO RELATORIO {"entrada": "/home/claude/entregas/rpa/dados/entrada_ocorrencias.csv", "status": "ok", "lidas": 51, "invalidas": 4, "ja_processadas": 0, "duplicadas": 3, "revisao_humana": 12, "processadas": 32, "notificadas": 30, "notificacao_pendente": 2, "retries_falhos": 18, "duracao_s": 4.08}
+2026-11-16 19:49:50,908 INFO OC2027 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,908 WARNING OC3204 em quarentena: data invalida (esperado AAAA-MM-DD)
+2026-11-16 19:49:50,908 INFO OC2012 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,908 INFO OC2018 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,908 INFO OC2004 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,908 INFO OC3104 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,908 INFO OC2020 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 WARNING OC3201 em quarentena: texto vazio ou curto
+2026-11-16 19:49:50,909 INFO OC2011 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2007 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2025 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2030 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2032 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2037 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2014 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2023 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2010 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2002 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2019 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2006 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2003 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2022 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2040 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 WARNING OC3202 em quarentena: coordenada nao numerica
+2026-11-16 19:49:50,909 INFO OC3011 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2029 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2033 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2008 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC3006 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2028 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2021 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2026 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2034 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC3101 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2013 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2015 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2036 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2017 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC3102 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2001 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC3103 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2005 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 WARNING OC3203 em quarentena: coordenada fora do intervalo
+2026-11-16 19:49:50,909 INFO OC3001 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2031 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2039 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2024 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2009 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2035 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2038 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,909 INFO OC2016 ja processada, ignorada (idempotencia)
+2026-11-16 19:49:50,910 INFO RELATORIO {"entrada": "/home/claude/entregas/rpa/dados/entrada_ocorrencias.csv", "status": "ok", "lidas": 51, "invalidas": 4, "ja_processadas": 47, "duplicadas": 0, "revisao_humana": 0, "processadas": 0, "notificadas": 0, "notificacao_pendente": 0, "retries_falhos": 0, "duracao_s": 0.02}

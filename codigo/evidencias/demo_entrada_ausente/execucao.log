@@ -1,0 +1,2 @@
+2026-11-16 19:50:14,109 ERROR arquivo de entrada ausente: nao_existe.csv
+2026-11-16 19:50:14,109 INFO RELATORIO {"entrada": "nao_existe.csv", "status": "entrada_ausente_ou_ilegivel", "lidas": 0, "invalidas": 0, "ja_processadas": 0, "duplicadas": 0, "revisao_humana": 0, "processadas": 0, "notificadas": 0, "notificacao_pendente": 0, "retries_falhos": 0, "duracao_s": 0.0}

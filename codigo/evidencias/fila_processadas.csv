@@ -1,0 +1,33 @@
+id,categoria,confianca,prioridade,sinais_risco,lat,lon,data,texto,resumo,protocolo
+OC2004,alagamento_drenagem,0.935,alta,crianca,-23.56102,-46.64724,2026-11-06,boca de lobo cheia de folhas crianca quase se machucou em Rua da Escola,boca de lobo cheia de folhas crianca quase se machucou em Rua da Escola,PROT-OC2004
+OC2007,iluminacao,0.915,alta,risco;acidente,-23.56271,-46.65156,2026-11-14,rua totalmente escura sem luz risco de acidente em Rua do Comercio,rua totalmente escura sem luz risco de acidente em Rua do Comercio,PROT-OC2007
+OC2032,iluminacao,0.921,alta,risco;acidente,-23.5608,-46.65338,2026-11-15,poste piscando e sem energia risco de acidente em Av. Central,poste piscando e sem energia risco de acidente em Av. Central,PROT-OC2032
+OC2022,iluminacao,0.632,alta,risco;acidente,-23.55942,-46.64645,2026-11-03,poste apagadoa noite risco de acidente em Rua do Comercio,poste apagadoa noite risco de acidente em Rua do Comercio,PROT-OC2022
+OC2034,alagamento_drenagem,0.952,alta,urgente,-23.56266,-46.64701,2026-11-03,boca de lobo cheia de folhas urgente em Rua do Comercio,boca de lobo cheia de folhas urgente em Rua do Comercio,
+OC2001,buraco_via,0.953,alta,perigo;perigosa,-23.56328,-46.65384,2026-11-09,via esburacada perigosa para carros em Rua das Acacias,via esburacada perigosa para carros em Rua das Acacias,PROT-OC2001
+OC2039,alagamento_drenagem,0.949,alta,urgente,-23.56046,-46.65287,2026-11-13,boca de lobo cheia de folhas urgente em Travessa Azul,boca de lobo cheia de folhas urgente em Travessa Azul,PROT-OC2039
+OC2016,buraco_via,0.911,alta,risco;acidente,-23.56353,-46.65356,2026-11-03,asfalto quebrado com cratera risco de acidente em Av. Central,asfalto quebrado com cratera risco de acidente em Av. Central,PROT-OC2016
+OC2020,calcada_acessibilidade,0.921,media,cadeira,-23.55782,-46.65066,2026-11-05,calcada quebrada impede cadeirante em Praca do Bairro,calcada quebrada impede cadeirante em Praca do Bairro,PROT-OC2020
+OC2011,buraco_via,0.829,media,crianca,-23.5571,-46.65302,2026-11-15,buraco grande na rua crianca quase se machucou em Av. Central,buraco grande na rua crianca quase se machucou em Av. Central,PROT-OC2011
+OC2025,calcada_acessibilidade,0.944,media,idosos,-23.55625,-46.64866,2026-11-01,calcada irregular dificulta idosos em Rua do Comercio,calcada irregular dificulta idosos em Rua do Comercio,PROT-OC2025
+OC2014,alagamento_drenagem,0.964,media,,-23.56291,-46.65095,2026-11-03,agua empocada apos chuva em Travessa Azul,agua empocada apos chuva em Travessa Azul,PROT-OC2014
+OC2002,iluminacao,0.947,media,urgente,-23.56179,-46.65262,2026-11-02,poste piscando e sem energia urgente em Rua das Acacias,poste piscando e sem energia urgente em Rua das Acacias,PROT-OC2002
+OC2019,alagamento_drenagem,0.952,media,,-23.56058,-46.65227,2026-11-04,bueiro entupido e alagando em Rua do Comercio,bueiro entupido e alagando em Rua do Comercio,PROT-OC2019
+OC2006,buraco_via,0.578,media,urgente,-23.55694,-46.64722,2026-11-09,tapa-buraco nunca hegou aqui urgente em Praca do Bairro,tapa-buraco nunca hegou aqui urgente em Praca do Bairro,PROT-OC2006
+OC2026,buraco_via,0.911,media,crianca,-23.56077,-46.65088,2026-11-13,cratera na pista de rolamento crianca quase se machucou em Rua da Escola,cratera na pista de rolamento crianca quase se machucou em Rua da Escola,PROT-OC2026
+OC2036,buraco_via,0.748,media,crianca,-23.55828,-46.65013,2026-11-02,buraco grande a rua crianca quase se machucou em Praca do Bairro,buraco grande a rua crianca quase se machucou em Praca do Bairro,PROT-OC2036
+OC2017,iluminacao,0.889,media,queda,-23.56143,-46.65372,2026-11-14,iluminacao publica falhando ja houve queda aqui em Rua das Acacias,iluminacao publica falhando ja houve queda aqui em Rua das Acacias,PROT-OC2017
+OC2024,alagamento_drenagem,0.97,media,,-23.55623,-46.64631,2026-11-11,BOCA DE LOBO CHEIA DE FOLHAS EM RUA DO COMERCIO,BOCA DE LOBO CHEIA DE FOLHAS EM RUA DO COMERCIO,PROT-OC2024
+OC2027,iluminacao,0.864,baixa,,-23.55752,-46.64774,2026-11-15,poste apagado a oite em Av. Central,poste apagado a oite em Av. Central,PROT-OC2027
+OC2012,iluminacao,0.83,baixa,,-23.55683,-46.64636,2026-11-12,iluminacao publica falando em Rua do Comercio,iluminacao publica falando em Rua do Comercio,PROT-OC2012
+OC2023,lixo_entulho,0.629,baixa,,-23.56148,-46.65064,2026-11-04,restos de obra largados na calcada em Rua da Escola,restos de obra largados na calcada em Rua da Escola,PROT-OC2023
+OC2010,calcada_acessibilidade,0.949,baixa,,-23.55953,-46.64677,2026-11-02,piso tatil danificado em Rua do Comercio,piso tatil danificado em Rua do Comercio,PROT-OC2010
+OC2003,lixo_entulho,0.952,baixa,,-23.5576,-46.65245,2026-11-05,lixo sem coleta ha dias em Rua das Acacias,lixo sem coleta ha dias em Rua das Acacias,
+OC2033,lixo_entulho,0.582,baixa,queda,-23.56045,-46.64897,2026-11-04,restos de obra largados na calcada ja houve queda aqui em Rua do Comercio,restos de obra largados na calcada ja houve queda aqui em Rua do Comercio,PROT-OC2033
+OC2008,lixo_entulho,0.863,baixa,,-23.55985,-46.64882,2026-11-12,lixo acumulado na esquina em Rua das Acacias,lixo acumulado na esquina em Rua das Acacias,PROT-OC2008
+OC2028,lixo_entulho,0.879,baixa,queda,-23.55863,-46.65135,2026-11-15,descarte irregular de moveis na rua ja houve queda aqui em Rua das Acacias,descarte irregular de moveis na rua ja houve queda aqui em Rua das Acacias,PROT-OC2028
+OC2021,buraco_via,0.962,baixa,,-23.56307,-46.64944,2026-11-15,cratera na pista de rolamento em Rua das Acacias,cratera na pista de rolamento em Rua das Acacias,PROT-OC2021
+OC2013,lixo_entulho,0.631,baixa,,-23.5578,-46.65072,2026-11-14,restos de obra largados na calcada em Praca do Bairro,restos de obra largados na calcada em Praca do Bairro,PROT-OC2013
+OC2031,buraco_via,0.952,baixa,,-23.55965,-46.65095,2026-11-13,BURACO GRANDE NA RUA EM PRACA DO BAIRRO,BURACO GRANDE NA RUA EM PRACA DO BAIRRO,PROT-OC2031
+OC2035,calcada_acessibilidade,0.949,baixa,,-23.55621,-46.65396,2026-11-03,piso tatil danificado em Rua do Comercio,piso tatil danificado em Rua do Comercio,PROT-OC2035
+OC2038,lixo_entulho,0.823,baixa,crianca,-23.5567,-46.65026,2026-11-15,lixo acumulado na esquina crianca quase se machucou em Rua das Acacias,lixo acumulado na esquina crianca quase se machucou em Rua das Acacias,PROT-OC2038

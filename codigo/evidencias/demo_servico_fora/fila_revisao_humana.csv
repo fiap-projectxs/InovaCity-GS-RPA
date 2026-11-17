@@ -1,0 +1,13 @@
+id,texto,categoria,confianca,motivo,lat,lon,data
+OC2018,colchao e sofa abandonados na via em Rua do Comercio,buraco_via,0.438,baixa confianca,-23.56239,-46.65049,2026-11-08
+OC3104,obrigado pelo atendimento,alagamento_drenagem,0.24,baixa confianca,-23.56,-46.65,2026-11-10
+OC2030,calcada estreita e quebrada para idosos ja houve queda aqui em Praca do Bairro,calcada_acessibilidade,0.421,baixa confianca,-23.5611,-46.64786,2026-11-09
+OC2037,"trecho escuro, medo de passar a noite em Rua do Comercio",iluminacao,0.419,baixa confianca,-23.55787,-46.64611,2026-11-11
+OC2040,passeio co buracos para quem usa muleta crianca quase se machucou em Praca do Bairro,buraco_via,0.299,baixa confianca,-23.5586,-46.64902,2026-11-05
+OC2029,ralo da rua nao escoa a agua urgente em Rua do Comercio,alagamento_drenagem,0.426,baixa confianca,-23.56337,-46.64844,2026-11-02
+OC3101,preciso falar com a prefeitura,buraco_via,0.418,baixa confianca,-23.56,-46.65,2026-11-10
+OC2015,passeio com buracos para quem usa muleta ja houve queda aqui em Rua das Acacias,buraco_via,0.438,baixa confianca,-23.56108,-46.64757,2026-11-05
+OC3102,problema aqui,iluminacao,0.213,baixa confianca,-23.56,-46.65,2026-11-10
+OC3103,"nao sei explicar, venham ver",alagamento_drenagem,0.24,baixa confianca,-23.56,-46.65,2026-11-10
+OC2005,sem rampa para cadeira de rodas no cruzamento ja houve queda aqui em Av. Central,calcada_acessibilidade,0.436,baixa confianca,-23.56329,-46.64652,2026-11-14
+OC2009,agua sobe na rua com qualquer chuva em Rua da Escola,alagamento_drenagem,0.377,baixa confianca,-23.56238,-46.64894,2026-11-05

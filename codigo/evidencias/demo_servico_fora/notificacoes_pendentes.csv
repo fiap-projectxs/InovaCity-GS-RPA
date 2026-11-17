@@ -1,0 +1,33 @@
+id,categoria,prioridade,texto
+OC2027,iluminacao,baixa,poste apagado a oite em Av. Central
+OC2012,iluminacao,baixa,iluminacao publica falando em Rua do Comercio
+OC2004,alagamento_drenagem,alta,boca de lobo cheia de folhas crianca quase se machucou em Rua da Escola
+OC2020,calcada_acessibilidade,media,calcada quebrada impede cadeirante em Praca do Bairro
+OC2011,buraco_via,media,buraco grande na rua crianca quase se machucou em Av. Central
+OC2007,iluminacao,alta,rua totalmente escura sem luz risco de acidente em Rua do Comercio
+OC2025,calcada_acessibilidade,media,calcada irregular dificulta idosos em Rua do Comercio
+OC2032,iluminacao,alta,poste piscando e sem energia risco de acidente em Av. Central
+OC2014,alagamento_drenagem,media,agua empocada apos chuva em Travessa Azul
+OC2023,lixo_entulho,baixa,restos de obra largados na calcada em Rua da Escola
+OC2010,calcada_acessibilidade,baixa,piso tatil danificado em Rua do Comercio
+OC2002,iluminacao,media,poste piscando e sem energia urgente em Rua das Acacias
+OC2019,alagamento_drenagem,media,bueiro entupido e alagando em Rua do Comercio
+OC2006,buraco_via,media,tapa-buraco nunca hegou aqui urgente em Praca do Bairro
+OC2003,lixo_entulho,baixa,lixo sem coleta ha dias em Rua das Acacias
+OC2022,iluminacao,alta,poste apagadoa noite risco de acidente em Rua do Comercio
+OC2033,lixo_entulho,baixa,restos de obra largados na calcada ja houve queda aqui em Rua do Comercio
+OC2008,lixo_entulho,baixa,lixo acumulado na esquina em Rua das Acacias
+OC2028,lixo_entulho,baixa,descarte irregular de moveis na rua ja houve queda aqui em Rua das Acacias
+OC2021,buraco_via,baixa,cratera na pista de rolamento em Rua das Acacias
+OC2026,buraco_via,media,cratera na pista de rolamento crianca quase se machucou em Rua da Escola
+OC2034,alagamento_drenagem,alta,boca de lobo cheia de folhas urgente em Rua do Comercio
+OC2013,lixo_entulho,baixa,restos de obra largados na calcada em Praca do Bairro
+OC2036,buraco_via,media,buraco grande a rua crianca quase se machucou em Praca do Bairro
+OC2017,iluminacao,media,iluminacao publica falhando ja houve queda aqui em Rua das Acacias
+OC2001,buraco_via,alta,via esburacada perigosa para carros em Rua das Acacias
+OC2031,buraco_via,baixa,BURACO GRANDE NA RUA EM PRACA DO BAIRRO
+OC2039,alagamento_drenagem,alta,boca de lobo cheia de folhas urgente em Travessa Azul
+OC2024,alagamento_drenagem,media,BOCA DE LOBO CHEIA DE FOLHAS EM RUA DO COMERCIO
+OC2035,calcada_acessibilidade,baixa,piso tatil danificado em Rua do Comercio
+OC2038,lixo_entulho,baixa,lixo acumulado na esquina crianca quase se machucou em Rua das Acacias
+OC2016,buraco_via,alta,asfalto quebrado com cratera risco de acidente em Av. Central
